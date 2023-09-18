@@ -15,4 +15,4 @@ find . -type d \( -name "__pycache__" \
 rm -rf build/ dist/ *.egg-info/ .pytest_cache/ .benchmarks/
 
 # Remove specific files
-rm -rf docs/raw_data.csv *.log *.out *.rdb
+rm -rf docs/raw_data.csv *.log *.out *.rdb .pytest_cache

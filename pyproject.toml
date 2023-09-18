@@ -1,21 +1,21 @@
 [tool.poetry]
-name = "readme-ai-ui"
+name = "readmeai-ui"
 version = "0.1.0"
-description = "🪄 Streamlit app for generating README.md files, powered by OpenAI's GPT LLMs ✨"
+description = "✨ Streamlit app that serves the readmeai LLM application 🤖"
 authors = ["Eli <43382407+eli64s@users.noreply.github.com>"]
+license = "Apache-2.0"
 readme = "README.md"
-packages = [{include = "readme_ai_ui"}]
+packages = [{include = "readmeai_ui"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-streamlit = "^1.25.0"
-readmeai = "^0.1.6"
+python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
+streamlit = "^1.26.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "*"
-flake8 = "*"
-isort = "*"
-ruff = "*"
+black = "^23.9.1"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+pytest = "^7.4.2"
 
 [build-system]
 requires = ["poetry-core"]
