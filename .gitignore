@@ -1,4 +1,1 @@
-src/score.py
-src/scoring.ipynb
-src/streamlit_app.py
-src/code_search_app.py
+notebooks/
