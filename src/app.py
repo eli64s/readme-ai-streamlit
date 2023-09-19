@@ -1,55 +1,111 @@
-import streamlit as st
-import subprocess
+"""Streamlit app for README-AI."""
+
+import logging
 import os
+import subprocess
 
-from utils import get_readme_file_content, get_readme_file_download_link
+import streamlit as st
+
+logging.basicConfig(level=logging.INFO)
 
 
-st.title("README-AI")
-st.write("🚀 Generate beautiful README.md files, powered by OpenAI's GPT LLMs 💫")
+def main():
+    # Initialize session state variables if they don't exist
+    if "readme_generated" not in st.session_state:
+        st.session_state.readme_generated = False
+    if "readme_content" not in st.session_state:
+        st.session_state.readme_content = ""
+    logging.basicConfig(level=logging.INFO)
 
-generate_readme = False
+    st.set_page_config(page_title="Streamlit | readme-ai", layout="wide")
 
-with st.sidebar:
-    st.header("README-AI Inputs")
-    api_key = st.text_input("OpenAI API Key:", type="password")
-    output_path = st.text_input("Output Path for README.md:", "readme-ai.md")
-    repository_url = st.text_input("Repository URL or local path:", "")
-    
-    if st.button("Generate README", key="sidebar_button"):
-        generate_readme = True
+    st.title(":rainbow[README-AI]")
+    title_text = """:blue[🚀 Generate beautiful README.md files for your coding projects! Powered by OpenAI's GPT language model APIs 💫]"""
+    st.markdown(title_text)
 
-if generate_readme:
-    st.header("Status")
+    generate_readme = False
 
-    if api_key:
-        os.environ["OPENAI_API_KEY"] = api_key
-    
-    command = ["readmeai"]
-    if output_path:
-        command.extend(["--output", output_path])
-    if repository_url:
-        command.extend(["--repository", repository_url])
+    # Sidebar for user inputs
+    with st.sidebar:
+        st.header(":blue[Configure] :rainbow[README-AI]")
+        api_key = st.text_input("OpenAI API Key:", type="password")
+        output_path = st.text_input("Output Path:", "readme-ai.md")
+        repository_url = st.text_input("Repository Source:", "")
 
-    with st.spinner('Generating your README.md 🙂...'):
-        try:
-            completed_process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-            
-            st.success("README generated successfully!")
+        if st.button("**:blue[Run] :rainbow[README-AI]**", key="sidebar_button"):
+            generate_readme = True
 
-            if os.path.exists(output_path):
-                with open(output_path, 'r') as file:
-                    readme_content = file.read()
+    helper_text = output_path.lower()
 
-                st.header("README.md Content")
-                
-       
-                file_content = get_readme_file_content(output_path)
-                st.markdown(get_readme_file_download_link(file_content), unsafe_allow_html=True)
+    if generate_readme:
+        st.header(":blue[Status]")
 
-                with st.container():
-                    st.code(readme_content, language='markdown')
-                
-        except subprocess.CalledProcessError as e:
-            st.error("Failed to generate README")
-            st.write("Command failed with error:", e.stderr)
+        if api_key:
+            os.environ["OPENAI_API_KEY"] = api_key
+
+            command = ["readmeai"]
+            if output_path:
+                command.extend(["--output", output_path])
+            if repository_url:
+                command.extend(["--repository", repository_url])
+
+            try:
+                with st.spinner(
+                    f"🤖 :blue[Processing repository] :green[:] {repository_url}"
+                ):
+                    subprocess.run(command, capture_output=True, check=True)
+
+                st.success(
+                    f"✅ :blue[Successfully generated file] :rainbow[:] {helper_text}"
+                )
+
+                if os.path.exists(output_path):
+                    with open(output_path, "r") as file:
+                        readme_content = file.read()
+                    st.session_state.readme_generated = True
+                    st.session_state.readme_content = readme_content
+
+            except subprocess.CalledProcessError as excinfo:
+                logging.error(f"Subprocess Error: {excinfo}")
+                st.error(
+                    f"❌ README generation failed.\nError: {excinfo.stderr.decode()}"
+                )
+            except Exception as excinfo:
+                logging.error(f"An unexpected error occurred: {excinfo}")
+                st.error(
+                    f"An unexpected error occurred.\nError: {excinfo.stderr.decode()}"
+                )
+
+    # If README has been generated, display the download button and content
+    if st.session_state.readme_generated:
+        st.markdown("### :blue[Output File]")
+
+        col1, col2 = st.columns([1, 0.1], gap="small")
+
+        with col1:
+            st.download_button(
+                label=f"**Download File -** :blue[{helper_text}]",
+                data=st.session_state.readme_content,
+                file_name=output_path,
+                mime="text/markdown",
+            )
+
+        with col2:
+            if st.button("**Reset Session**"):
+                # Reset session state variables and reload the page
+                st.session_state.readme_generated = False
+                st.session_state.readme_content = ""
+                st.experimental_rerun()
+
+        # Expander for raw code
+        with st.expander(f"**View File - :blue[{helper_text}]**"):
+            st.markdown(
+                "**📋 Click icon in the top right corner to copy Markdown code.**"
+            )
+            st.code(
+                st.session_state.readme_content, language="markdown", line_numbers=True
+            )
+
+
+if __name__ == "__main__":
+    main()
