@@ -76,7 +76,7 @@ def main():
                     f"An unexpected error occurred.\nError: {excinfo.stderr.decode()}"
                 )
 
-    # If README has been generated, display the download button and content
+    # If README has been generated, display download button and content
     if st.session_state.readme_generated:
         st.markdown("### :blue[Output File]")
 
