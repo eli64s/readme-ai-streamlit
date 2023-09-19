@@ -101,7 +101,7 @@ def main():
             command.extend(["--repository", repo_path])
 
         try:
-            execute_command(command, readme_path)
+            execute_command(command, repo_path)
             st.success(f":blue[✅ README file generated -] {readme_path}")
             if os.path.exists(output_path):
                 with open(output_path, "r") as file:
