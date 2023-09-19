@@ -36,10 +36,9 @@
 
 ---
 
-
 ## 📍 Overview
 
-Exception: 
+This repository is a Streamlit app that generates README files for coding projects using OpenAI's GPT language model APIs. With user inputs, commands execution, and generated content previewing, it offers an efficient and seamless user experience. The app's core functionalities include integrating with GPT language model APIs, providing session reset, download options, and utility functions for a streamlined experience. This project aims to automate the process of creating high-quality README files, saving developers time and effort while ensuring beautiful and effective documentation for their projects.
 
 ---
 
@@ -47,16 +46,16 @@ Exception:
 
 | Feature                | Description                           |
 | ---------------------- | ------------------------------------- |
-| **⚙️ Architecture**     | The codebase follows a functional architecture with separate modules for cleaning operations, utility functions, and the main app. The app is built on top of the Streamlit framework, allowing for easy interactive web-based development.    |
-| **📖 Documentation**   | The codebase is well-documented with clear comments throughout the code. The README file provides comprehensive instructions on how to set up and run the app.    |
-| **🔗 Dependencies**    | The codebase relies on several external libraries and APIs such as Streamlit, OpenAI's GPT-3 language model API, VS Code, and pytest for testing. The dependencies are clearly listed in the requirements.txt file.    |
-| **🧩 Modularity**      | The codebase is organized into cohesive modules, with separate files for cleaning operations, utility functions, and the app logic. The modular design makes the code easier to understand, maintain, and enhance.    |
-| **✔️ Testing**          | The codebase includes a separate script for running tests using pytest. The tests cover critical aspects of the application, ensuring its reliability and correctness.    |
-| **⚡️ Performance**      | As a language model-based app, the performance may vary based on factors like the size of the input, complexity of the generation, and the speed of the GPT-3 API. Optimal performance relies on efficient caching and network latency management.    |
-| **🔐 Security**        | The codebase doesn't explicitly address security measures. However, to ensure data protection, considerations such as sanitizing user inputs, handling API keys securely, and securing the network communication should be taken into account when deploying the app.    |
-| **🔀 Version Control** | The codebase is hosted on GitHub, enabling version control and collaboration features using Git. Developers can develop new features, track changes, and merge them using pull requests, ensuring codebase stability and effective collaboration.    |
-| **🔌 Integrations**    | The app interacts with external systems such as OpenAI's GPT-3 language model API for generating README files and Streamlit for rendering the UI. Additionally, it interacts with VS Code settings for cleaning operations.    |
-| **📶 Scalability**     | The system's scalability can be enhanced by optimizing the code's efficiency, such as implementing caching mechanisms, utilizing background job processing, and scaling horizontally across multiple instances for serving a large number of concurrent users.    |
+| **⚙️ Architecture**     | The codebase follows a modular architecture with separation of concerns between the Streamlit app, utility functions, and script files. It uses a client-server architecture for generating README files and utilizes the OpenAI GPT language model APIs for content generation.    |
+| **📖 Documentation**   | The codebase lacks detailed documentation. Although the filenames provide some insight into the purpose of each file, a more comprehensive overview of the functionality and usage would be beneficial for developers.    |
+| **🔗 Dependencies**    | The codebase depends on several external libraries like Streamlit for the app's UI, requests for API communication, and Click for command-line interface handling. It also relies on the OpenAI GPT language model APIs for content generation.    |
+| **🧩 Modularity**      | The codebase showcases a good level of modularity. The separation of the Streamlit app, utility functions, and script files into distinct modules contributes to this modularity. Moreover, these components are relatively interchangeable and can be extended or modified independently.    |
+| **✔️ Testing**          | The codebase does not have specific tests in place, which is a limitation. Implementing unit tests using frameworks like pytest to validate critical sections, such as utility functions and API interactions, would increase confidence in the application's functionality.    |
+| **⚡️ Performance**      | The performance of the system highly depends on the speed and efficiency of the OpenAI GPT language model API for generating README content. Other parts of the application appear to be lightweight, and the absence of complex computations suggests overall satisfactory performance.    |
+| **🔐 Security**        | The codebase does not include specific measures for security. While there are no glaring security risks in the provided code, integrating security practices like input sanitization and authorization checks may enhance the system's security profile.    |
+| **🔀 Version Control** | The codebase utilizes Git for version control. However, it lacks explicit information about branching, commit practices, and pull request workflows that developers follow. Establishing guidelines for version control processes would improve collaboration and ensure codebase integrity.    |
+| **🔌 Integrations**    | The app interacts with the OpenAI GPT language model APIs for generating readme content. The Streamlit framework integrates with various Python ecosystem libraries, providing opportunities for additional integrations to enhance functionality or implement custom features.   |
+| **📶 Scalability**     | With the use of external dependencies like Streamlit and OpenAI GPT, the codebase has the potential to scale horizontally as demand grows. Leveraging the APIs' scalability and extending functionalities using modular components, the system can handle increased users and integration requirements with ease.   |
 
 ---
 
@@ -64,21 +63,7 @@ Exception:
 ## 📂 Project Structure
 
 
-```bash
-repo
-├── LICENSE
-├── README.md
-├── poetry.lock
-├── pyproject.toml
-├── scripts
-│   └── clean.sh
-└── src
-    ├── __init__.py
-    ├── app.py
-    └── utils.py
 
-3 directories, 8 files
-```
 
 ---
 
@@ -86,18 +71,18 @@ repo
 
 <details closed><summary>Scripts</summary>
 
-| File                                                                         | Summary                                                                                                                                                                                                                        |
-| ---                                                                          | ---                                                                                                                                                                                                                            |
-| [clean.sh](https://github.com/eli64s/readmeai-ui/blob/main/scripts/clean.sh) | This Bash script performs various cleaning operations on a project directory. It removes backup files, Python cache files, cache directories, VS Code settings, build artifacts, pytest cache, benchmarks, and specific files. |
+| File                                                                         | Summary                                                                                                                                                                                                             |
+| ---                                                                          | ---                                                                                                                                                                                                                 |
+| [clean.sh](https://github.com/eli64s/readmeai-ui/blob/main/scripts/clean.sh) | This code is a bash script that removes various types of files and directories, such as backup files, cache files and directories, VS Code settings, build artifacts, pytest cache, benchmarks, and specific files. |
 
 </details>
 
 <details closed><summary>Src</summary>
 
-| File                                                                     | Summary                                                                                                                                                                                                                                                                                                                                                |
-| ---                                                                      | ---                                                                                                                                                                                                                                                                                                                                                    |
-| [utils.py](https://github.com/eli64s/readmeai-ui/blob/main/src/utils.py) | These utility functions serve the Streamlit readmeai app, providing necessary tools for efficient functionality and enhancing the user experience.                                                                                                                                                                                                     |
-| [app.py](https://github.com/eli64s/readmeai-ui/blob/main/src/app.py)     | This code is a Streamlit app that generates beautiful README.md files for coding projects using OpenAI's GPT language model APIs. It takes user inputs for API key, output path, and repository source, and generates the README file accordingly. The app also allows users to download the generated file, reset the session, and view the raw code. |
+| File                                                                     | Summary                                                                                                                                                                                                                                                                                                                         |
+| ---                                                                      | ---                                                                                                                                                                                                                                                                                                                             |
+| [app.py](https://github.com/eli64s/readmeai-ui/blob/main/src/app.py)     | This Streamlit app generates beautiful README files for coding projects. It collects user inputs, executes commands, displays and allows for previewing generated README content. Integration with OpenAI's GPT language model APIs powers the generation process. The app provides session reset and download functionalities. |
+| [utils.py](https://github.com/eli64s/readmeai-ui/blob/main/src/utils.py) | The code consists of utility functions designed specifically for the Streamlit readmeai app. These functions facilitate the app's core functionalities, ensuring efficiency and seamless user experience.                                                                                                                       |
 
 </details>
 
