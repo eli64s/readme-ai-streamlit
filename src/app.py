@@ -17,28 +17,30 @@ def main():
         st.session_state.readme_content = ""
     logging.basicConfig(level=logging.INFO)
 
-    st.set_page_config(page_title="Streamlit | readme-ai", layout="wide")
+    st.set_page_config(page_title="streamlit | readme-ai", layout="wide")
 
     st.title(":rainbow[README-AI]")
-    title_text = """:blue[🚀 Generate beautiful README.md files for your coding projects! Powered by OpenAI's GPT language model APIs 💫]"""
+    title_text = f"""
+    :blue[🚀 Generate beautiful README.md files for your coding projects! Powered by OpenAI's GPT language model APIs 💫]
+    """
     st.markdown(title_text)
 
     generate_readme = False
 
     # Sidebar for user inputs
     with st.sidebar:
-        st.header(":blue[Configure] :rainbow[README-AI]")
-        api_key = st.text_input("OpenAI API Key:", type="password")
-        output_path = st.text_input("Output Path:", "readme-ai.md")
-        repository_url = st.text_input("Repository Source:", "")
+        st.header("**:rainbow[README-AI] :blue[Configuration]**")
+        api_key = st.text_input("**1️⃣ OpenAI API Key**", type="password")
+        output_path = st.text_input("**2️⃣ Output File**", "readme-ai.md")
+        repository_url = st.text_input("**3️⃣ Repository**", "")
 
-        if st.button("**:blue[Run] :rainbow[README-AI]**", key="sidebar_button"):
+        if st.button("**:blue[Run]**", key="sidebar_button"):
             generate_readme = True
 
     helper_text = output_path.lower()
 
     if generate_readme:
-        st.header(":blue[Status]")
+        st.markdown("### :blue[Status]")
 
         if api_key:
             os.environ["OPENAI_API_KEY"] = api_key
@@ -51,12 +53,12 @@ def main():
 
             try:
                 with st.spinner(
-                    f"🤖 :blue[Processing repository] :green[:] {repository_url}"
+                    f":blue[🤖 Processing repository:] {repository_url}"
                 ):
                     subprocess.run(command, capture_output=True, check=True)
 
                 st.success(
-                    f"✅ :blue[Successfully generated file] :rainbow[:] {helper_text}"
+                    f":blue[✅ Successfully generated file:] {helper_text}"
                 )
 
                 if os.path.exists(output_path):
@@ -73,7 +75,7 @@ def main():
             except Exception as excinfo:
                 logging.error(f"An unexpected error occurred: {excinfo}")
                 st.error(
-                    f"An unexpected error occurred.\nError: {excinfo.stderr.decode()}"
+                    f"❌ README generation failed.\nError: {excinfo.stderr.decode()}"
                 )
 
     # If README has been generated, display download button and content
@@ -81,10 +83,9 @@ def main():
         st.markdown("### :blue[Output File]")
 
         col1, col2 = st.columns([1, 0.1], gap="small")
-
         with col1:
             st.download_button(
-                label=f"**Download File -** :blue[{helper_text}]",
+                label=f"**Download File: :blue[{helper_text}]**",
                 data=st.session_state.readme_content,
                 file_name=output_path,
                 mime="text/markdown",
@@ -98,9 +99,9 @@ def main():
                 st.experimental_rerun()
 
         # Expander for raw code
-        with st.expander(f"**View File - :blue[{helper_text}]**"):
+        with st.expander(f"**View File: :blue[{helper_text}]**"):
             st.markdown(
-                "**📋 Click icon in the top right corner to copy Markdown code.**"
+                "**📋 Click the icon in the top right corner to copy Markdown code.**"
             )
             st.code(
                 st.session_state.readme_content, language="markdown", line_numbers=True
