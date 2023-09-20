@@ -55,10 +55,9 @@ def execute_command(command, path):
             if stderr_line:
                 stderr_accumulated += stderr_line
                 output_container.text_area(
-                    ":rainbow[README-AI] Log:",
+                    "readmeai logs",
                     value=stderr_accumulated,
                     height=200,
-                    max_chars=10000,
                 )
             if process.poll() is not None:
                 break
