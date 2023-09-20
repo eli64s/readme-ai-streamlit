@@ -9,6 +9,7 @@ import streamlit as st
 logging.basicConfig(level=logging.INFO)
 
 
+
 def init_session_state():
     """Initialize session state variables if they don't exist."""
     if "readme_generated" not in st.session_state:
@@ -20,9 +21,10 @@ def init_session_state():
 def get_user_inputs():
     """Collect user inputs from the sidebar."""
     with st.sidebar:
-        st.header("**:rainbow[README-AI] Configuration**")
+        st.header("**:blue[README-AI Configuration]**")
         api_key = st.text_input("**OpenAI API Key**", type="password")
         repo_path = st.text_input("**Repository**", "")
+        output_path = st.text_input("**Output Path**", "readmeai.md")
 
         col1, col2 = st.columns([1, 1])
 
@@ -36,8 +38,18 @@ def get_user_inputs():
                 st.session_state.readme_content = ""
                 st.experimental_rerun()
                 
+        resource_text = (
+            f"""\
+                > ## **:blue[README-AI Resources]**
+                > - **Source Code**: [GitHub](https://github.com/eli64s/readme-ai)
+                > - **PyPI Package**: [PyPI](https://pypi.org/project/readmeai/)
+                > - **Docker Image**: [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
+            """
+        )
+        st.divider()
+        st.markdown(resource_text)
 
-    return api_key, repo_path, generate_readme
+    return api_key, output_path, repo_path, generate_readme
 
 
 
@@ -55,12 +67,14 @@ def execute_command(command, path):
             if stderr_line:
                 stderr_accumulated += stderr_line
                 output_container.text_area(
-                    "readmeai logs",
+                    "*Logging README-AI execution*",
                     value=stderr_accumulated,
                     height=200,
                 )
             if process.poll() is not None:
                 break
+            if not stderr_line and process.poll() is not None:
+                break 
 
 
 def display_readme_output(output_path):
@@ -79,29 +93,26 @@ def display_readme_output(output_path):
 
 def main():
     init_session_state()
-    st.set_page_config(page_title="Streamlit | README-AI", layout="wide")
+    st.set_page_config(page_title="Streamlit | README-AI", layout="centered")
     st.title(":rainbow[README-AI]")
-    title_text = (
-        f"""\
-        ‣ Generate beautiful README.md files for your coding projects!  
-        ‣ Powered by OpenAI's GPT language model APIs 💫
-        """
-    )
+    title_text = (":rocket: Auto-generate beautiful README.md files! Powered by OpenAI's GPT language model APIs :dizzy:")
     st.markdown(title_text)
 
-    api_key, repo_path, generate_readme = get_user_inputs()
-    output_path = "README-AI.md"
+    api_key, output_path, repo_path, generate_readme = get_user_inputs()
+    output_path = output_path if output_path else "readmeai.md"
 
     if generate_readme and api_key:
         os.environ["OPENAI_API_KEY"] = api_key
         command = ["readmeai"]
 
+        if output_path:
+            command.extend(["--output", output_path])
         if repo_path:
             command.extend(["--repository", repo_path])
 
         try:
             execute_command(command, repo_path)
-            st.success(f"README-AI execution completed successfully.")
+            st.success(f"README generated successfully - {output_path}")
             if os.path.exists(output_path):
                 with open(output_path, "r") as file:
                     readme_content = file.read()
