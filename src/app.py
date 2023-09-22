@@ -20,11 +20,12 @@ def init_session_state():
 
 def get_user_inputs():
     """Collect user inputs from the sidebar."""
+
     with st.sidebar:
-        st.header("**:blue[README-AI Configuration]**")
+        st.header("**:blue[Configuration]**")
         api_key = st.text_input("**OpenAI API Key**", type="password")
         repo_path = st.text_input("**Repository**", "")
-        output_path = st.text_input("**Output Path**", "readmeai.md")
+        output_path = "readmeai.md"
 
         col1, col2 = st.columns([1, 1])
 
@@ -32,7 +33,7 @@ def get_user_inputs():
             generate_readme = st.button("**:green[Run]**", key="sidebar_button",use_container_width=True)
         
         with col2:
-            reset_session = st.button("**:red[Reset]**",use_container_width=True)
+            reset_session = st.button("**:red[Clear]**",use_container_width=True)
             if reset_session:
                 st.session_state.readme_generated = False
                 st.session_state.readme_content = ""
@@ -40,10 +41,10 @@ def get_user_inputs():
                 
         resource_text = (
             f"""\
-                > ## **:blue[README-AI Resources]**
-                > - **Source Code**: [GitHub](https://github.com/eli64s/readme-ai)
-                > - **PyPI Package**: [PyPI](https://pypi.org/project/readmeai/)
-                > - **Docker Image**: [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
+                > ## **:blue[Resources]**
+                > - [GitHub](https://github.com/eli64s/readme-ai)
+                > - [PyPI](https://pypi.org/project/readmeai/)
+                > - [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
             """
         )
         st.divider()
@@ -69,7 +70,7 @@ def execute_command(command, path):
                 output_container.text_area(
                     "*Logging README-AI execution*",
                     value=stderr_accumulated,
-                    height=200,
+                    height=250,
                 )
             if process.poll() is not None:
                 break
@@ -95,7 +96,7 @@ def main():
     init_session_state()
     st.set_page_config(page_title="Streamlit | README-AI", layout="centered")
     st.title(":rainbow[README-AI]")
-    title_text = (":rocket: Auto-generate beautiful README.md files! Powered by OpenAI's GPT language model APIs :dizzy:")
+    title_text = ("🚀 Automated README generation from the terminal, powered by GPT 🪐")
     st.markdown(title_text)
 
     api_key, output_path, repo_path, generate_readme = get_user_inputs()
