@@ -1,306 +1,366 @@
-<div align="center">
-    <h1 align="center">
-        <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="80" />
-        <img src="https://img.icons8.com/?size=512&id=kTuxVYRKeKEY&format=png" width="80" />
-        <br>README-AI
-    </h1>
-    <h3>◦ Generate beautiful and informative <i>README</i> files</h3>
-    <h3>◦ Developed with OpenAI's GPT language model APIs</h3>
-    <br>
-    <p align="center">
-        <img src="https://img.shields.io/badge/Markdown-000000.svg?stylee&logo=Markdown&logoColor=white" alt="Markdown" />
-        <img src="https://img.shields.io/badge/OpenAI-412991.svg?stylee&logo=OpenAI&logoColor=white" alt="OpenAI" />
-        <img src="https://img.shields.io/badge/Python-3776AB.svg?stylee&logo=Python&logoColor=white" alt="Python" />
-        <img src="https://img.shields.io/badge/Pytest-0A9EDC.svg?stylee&logo=Pytest&logoColor=white" alt="pytest" />
-        <img src="https://img.shields.io/badge/Docker-2496ED.svg?style&logo=Docker&logoColor=white" alt="Docker" />
-        <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style&logo=GitHub-Actions&logoColor=white" alt="actions" />
-    </p>
-    <a href="https://pypi.org/project/readmeai/">
-        <img src="https://img.shields.io/pypi/v/readmeai?color=5D6D7E&logo=pypi" alt="pypi-version" />
-    </a>
-    <a href="https://pypi.org/project/readmeai/">
-        <img src="https://img.shields.io/pypi/pyversions/readmeai?color=5D6D7E&logo=python" alt="pypi-python-version" />
-    </a>
-    <a href="https://pypi.org/project/readmeai/">
-        <img src="https://img.shields.io/pypi/dm/readmeai?color=5D6D7E" alt="pypi-downloads" />
-    </a>
-    <img src="https://img.shields.io/github/license/eli64s/readme-ai?color=5D6D7E" alt="github-license" />
-</div>
+# README-AI
+
+<img src="https://img.icons8.com/?size=512&id=55494&format=png" width="100" /><img src="https://img.icons8.com/?size=512&id=kTuxVYRKeKEY&format=png" width="100" />
+
+Automatically generate beautiful README files using OpenAI's GPT language models.
+
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/eli64s/readme-ai/.github%2Fworkflows%2Frelease-pipeline.yml?logo=GitHub&label=cicd&color=c125ff)](https://github.com/eli64s/readme-ai/actions)
+[![Codecov](https://img.shields.io/codecov/c/github/eli64s/readme-ai?logo=codecov&color=c125ff)](https://app.codecov.io/gh/eli64s/readme-ai)
+[![PyPI version](https://img.shields.io/pypi/v/readmeai?color=c125ff)](https://badge.fury.io/py/readmeai)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/readmeai.svg?color=c125ff)](https://pypi.python.org/pypi/readmeai/)
+![License: MIT](https://img.shields.io/github/license/eli64s/readme-ai?color=c125ff)
 
 ---
 
-## 📖 Table of Contents
-
-- [📖 Table of Contents](#-table-of-contents)
-- [📍 Overview](#-overview)
-- [🤖 Demos](#-demos)
-- [📦 Features](#-features)
-- [👩‍💻 Usage](#-usage)
-  - [🛠 Installation](#-installation)
-  - [⚙️ Configuration](#️-configuration)
-  - [🚀 Running *README-AI*](#-running-readme-ai)
-  - [🧪 Tests](#-tests)
-- [🛣 Roadmap](#-roadmap)
-- [📒 Changelog](#-changelog)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [👏 Acknowledgments](#-acknowledgments)
+## 🔗 Quick Links
+* [Overview](#-overview)
+* [Demo](#-demo)
+* [Features](#-features)
+* [Getting Started](#-getting-started)
+* [Project Roadmap](#-project-roadmap)
+* [Contributing](#-contributing)
+* [License](#-license)
 
 ---
 
-## 📍 Overview
+## 🔭 Overview
 
-*README-AI* is a powerful command-line tool that generates robust README.md files for your software and data projects. By simply providing a remote repository URL or path to your codebase, this tool auto-generates documentation for your entire project, leveraging the capabilities OpenAI's GPT language model APIs.
+***Objective***
 
-**🎯 Motivation**
+<em>README-AI</em> is a dev tool that auto-generates detailed README.md files from the command-line using OpenAI's GPT models. Provide a repository URL or local directory path, and <em>README-AI</em> builds a well-structured README.md for your project.<br>
 
-Simplifies the process of writing and maintaining high-quality project documentation, enhancing developer productivity and workflow. The ultimate goal of *readme-ai* is to improve the adoption and usability of open-source software, enabling all skill levels to better understand complex codebases and easily use open-source tools.
+***Motivation***
 
-**⚠️ Disclaimer**
+Streamlines documentation creation and maintenance, enhancing developer productivity. <em>README-AI</em> aims to improve the adoption of open-source software, enabling all skill levels and disciplines to understand, utilize, and contribute to projects more effectively.<br>
 
-This project is currently under development and has an opinionated configuration. While *readme-ai* provides an excellent starting point for documentation, its important to review all text generated by the OpenAI API to ensure it accurately represents your codebase.
+> [!IMPORTANT]
+>
+> This project is under development with an opinionated setup. It is vital to review the text generated by the OpenAI API to ensure it accurately represents your codebase.<br>
+
+---
+
+## 🎈 Demo
+
+- Run <i>readme-ai</i> in your terminal via PyPI, Docker, and more.
+
+[readmeai-cli-demo](https://github.com/eli64s/readme-ai/assets/43382407/89184f7c-1870-44b6-8175-c9c94fadeb6b)
+
+<br>
+
+- CLI option `--offline` can be used to generate a README.md without an OpenAI API key.
+- Useful for quickly getting a baseline document containg your project's metadata!
+
+[readmeai-cli-offline-demo](https://github.com/eli64s/readme-ai/assets/43382407/2c9b8456-80b9-4840-8da2-51780ed0c093)
+
+<br>
+
+<!--
+Streamlit Community Cloud
+> Use *readme-ai* directly in your browser! Zero installation, zero code!
+[streamlit-demo](https://github.com/eli64s/readme-ai/assets/43382407/e8260e78-b684-4e72-941c-b3046b90c452)
+-->
 
 ---
 
-## 🤖 Demos
+## 🤖 Features
 
-<h3 align="center">► Command-Line Interface</h3>
 <br>
-<table align="center">
-    <tr>
-        <td>
-            <a href="https://youtu.be/p9qPjm0l4Q4">
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/cli-demo.png" alt="cli-demo" />
-            </a>
-        </td>
-    </tr>
-</table>
-<br>
-<h3 align="center">☁ Streamlit Community Cloud</h3>
-<br>
-<table align="center">
-    <tr>
-        <td>
-            <p>
-                ‣ Use <i>readme-ai</i> directly in your browser with Streamlit! Zero installation, zero code!
-            </p>
-            <p>
-                ‣ <a href="https://readmeai.streamlit.app/">🛸 Take me to <i>readme-ai</i> on Streamlit!</a>
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-        <a href="https://youtu.be/4xuqltFDfCo">
-        <img src="https://github.com/eli64s/readme-ai/blob/main/examples/imgs/streamlit-demo.png?raw=true" alt="streamlit-demo" />
-        </a>
-        </td>
-    </tr>
-</table>
-<br>
-
----
-## 📦 Features
-
-<h1 align="center">⒈<br>👇<br><br>🎖 Introduction and Badges</h1>
-<table align="center">
-    <tr>
-        <td>
-            <h3>Project Slogan and Badges</h3>
-            <p>
-                ‣ A slogan to highlight your poject is generated by <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L56">prompting</a> OpenAI's GPT engine.
-            </p>
-            <p>
-                ‣ Codebase dependencies and metadata are visualized using <a href="https://shields.io/">Shields.io</a> badges.
-            </p>
-            <!--<p>‣ Badges are sorted by hex code, displayed from light to dark hues.</p>-->
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/badges.png" alt="badges" />
-        </td>
-    </tr>
-</table>
-
-<h1 align="center">⒉<br>👇<br><br>📃 Codebase Documentation</h1>
-<table align="center">
-    <tr>
-        <h3>Directory Tree and File Summaries</h3>
-        <p>
-            ‣ Your project's directory structure is visualized using the <i>tree</i> command.
-        </p>
-        <p>
-            ‣ Each file in the codebase is summarized by OpenAI's <i>GPT</i> model.
-        </p>
-    </tr>
-    <tr>
-        <td align="center">
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/repository-tree.png" alt="repository-tree" />
-        </td>
-        <td align="center">
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/code-summaries.png" alt="code-summaries" />
-        </td>
-    </tr>
-</table>
-
-<h1 align="center">⒊<br>👇<br><br>🧚 Overview and Features Table</h1>
-<table align="center">
-    <tr>
-        <td>
-            <h3>Prompted Text Generation</h3>
-            <p>
-                ‣ An overview paragraph and features table are generated using <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L31">detailed prompts</a>, embedded with project metadata.
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/feature-table.png" alt="feature-table" />
-        </td>
-    </tr>
-</table>
-
-<h1 align="center">⒋<br>👇<br><br>🔧 Dynamic Usage Instructions</h1>
-<table align="center">
-    <tr>
-        <td>
-            <h3>Installation, Running, and Test</h3>
-            <p>
-                ‣ Creates instructions for installation, running, and testing your project based on the language of your codebase.
-            </p>
-            <p>
-                ‣ Instructions are created by identifying the codebase's top language and referring to our <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/language_setup.toml">language_setup.toml</a> configuration file.
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/usage-instructions.png" alt="usage-instructions" />
-        </td>
-    </tr>
-</table>
-
-<h1 align="center">⒌<br>👇<br><br>📝 Contributing Guidelines and more!</h1>
-<table align="center">
-    <tr>
-        <td>
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/roadmap.png"
-            alt="roadmap" />
-        </td>
-    </tr>
-    <br>
-    <tr>
-        <td>
-            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/license.png"
-            alt="license" />
-        </td>
-    </tr>
-</table>
-
-<h1 align="center">⒍<br>👇<br><br>🪄 Example Output Files</h1>
-<div align="center">
+<div>
+<details>
+    <summary style="display: flex; align-items: center;">
+        <span style="font-size: 2.0em;"> ❶ Badges</span>
+    </summary>
     <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Output File</th>
-                <th>Repository</th>
-                <th>Languages</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-python.md">readme-python.md</a></td>
-                <td><a href="https://github.com/eli64s/readme-ai">readme-ai</a></td>
-                <td>Python</td>
-            </tr>
-            <tr>
-                <td>2️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-typescript.md">readme-typescript.md</a></td>
-                <td><a href="https://github.com/Yuberley/ChatGPT-App-React-Native-TypeScript">chatgpt-app-react-typescript</a></td>
-                <td>TypeScript, React</td>
-            </tr>
-            <tr>
-                <td>3️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-javascript.md">readme-javascript.md</a></td>
-                <td><a href="https://github.com/idosal/assistant-chat-gpt-javascript">assistant-chat-gpt-javascript</a></td>
-                <td>JavaScript, React</td>
-            </tr>
-            <tr>
-                <td>4️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md">readme-kotlin.md</a></td>
-                <td><a href="https://github.com/rumaan/file.io-Android-Client">file.io-android-client</a></td>
-                <td>Kotlin, Java, Android</td>
-            </tr>
-            <tr>
-                <td>5️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-rust-c.md">readme-rust-c.md</a></td>
-                <td><a href="https://github.com/DownWithUp/CallMon">rust-c-app</a></td>
-                <td>C, Rust</td>
-            </tr>
-            <tr>
-                <td>6️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-go.md">readme-go.md</a></td>
-                <td><a href="https://github.com/olliefr/docker-gs-ping">go-docker-app</a></td>
-                <td>Go</td>
-            </tr>
-            <tr>
-                <td>7️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-java.md">readme-java.md</a></td>
-                <td><a href="https://github.com/avjinder/Minimal-Todo">java-minimal-todo</a></td>
-                <td>Java</td>
-            </tr>
-            <tr>
-                <td>8️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md">readme-fastapi-redis.md</a></td>
-                <td><a href="https://github.com/FerrariDG/async-ml-inference">async-ml-inference</a></td>
-                <td>Python, FastAPI, Redis</td>
-            </tr>
-            <tr>
-                <td>9️⃣</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-mlops.md">readme-mlops.md</a></td>
-                <td><a href="https://github.com/GokuMohandas/mlops-course">mlops-course</a></td>
-                <td>Python, Jupyter</td>
-            </tr>
-            <tr>
-                <td>🔟</td>
-                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-pyflink.md">readme-pyflink.md</a></td>
-                <td><a href="https://github.com/eli64s/flink-flow">flink-flow</a></td>
-                <td>PyFlink</td>
-            </tr>
-        </tbody>
+        <tr>
+            <td>
+                <h4><i>Project Slogan and Badges</i></h4>
+                <p>
+                    ‣ A slogan to highlight your poject is generated by <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/settings/config.toml#L33">prompting</a> OpenAI's GPT engine.
+                    </p>
+                <p>
+                    ‣ Codebase dependencies and metadata are visualized using <a href="https://shields.io/">Shields.io</a> badges.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/badges.png" alt="badges" />
+            </td>
+        </tr>
     </table>
+    <table>
+        <p>
+            ‣ Use the CLI option <code>--badges</code> to select the style of badges for your README! <br>
+            ‣ 6 options currently supported: <i>flat (default), flat-square, plastic, for-the-badge, social, square</i>. Find a few examples below.
+        <tr>
+            <td>
+                <h4 style="text-align:left;">1. Shieldsio <em>flat</em> badge style</h4>
+                <p style="text-align:left;">Command: none as its the default style for <em>readme-ai</em></p>
+                <div style="text-align:center;">
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/badges-shieldsio-default.png" alt="badges-shieldsio-default" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4 style="text-align:left;">2. Shieldsio <em>for-the-badge</em> style</h4>
+                <p style="text-align:left;">Command: <code>--badges for-the-badge</code></p>
+                <div style="text-align:center;">
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/badges-shieldsio-flat.png" alt="badges-shieldsio-flat" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4 style="text-align:left;">3. Square <em>iOS style</em> badges</h4>
+                <p style="text-align:left;">Command: <code>--badges square</code></p>
+                <div style="text-align:center;">
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/badges-square.png" alt="badges-square" />
+                </div>
+            </td>
+        </tr>
+    </table>
+</details>
 </div>
-
-<h1 align="center">⒎<br>👇<br><br>🎨 Custom <i>README</i> templates coming soon!</h1>
-<p align="center">‣ Developing a feature that allows users to select from a variety of README formats and styles.</p>
-<p align="center">‣ Templates will focus on use-cases such as web development, data, machine learning, minimal, and more!</p>
+<br>
+<div>
+    <details>
+        <summary style="display: flex; align-items: center;">
+            <span style="font-size: 2.0em;"> ❷ Codebase Documentation</span>
+        </summary>
+        <table>
+            <tr>
+                <td colspan="2">
+                    <h4><i>Directory Tree and File Summaries</i></h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p>‣ Your project's directory structure is visualized using a custom tree function.</p>
+                    <p>‣ Each file in the codebase is summarized by OpenAI's <i>GPT</i> model.</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/repository-tree.png" alt="repository-tree" />
+                </td>
+                <td align="center">
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/code-summaries.png" alt="code-summaries" />
+                </td>
+            </tr>
+        </table>
+    </details>
+</div>
+<br>
+<div>
+    <details>
+        <summary style="display: flex; align-items: center;">
+            <span style="font-size: 2.0em;"> ❸ Features Table</span>
+        </summary>
+        <table>
+            <tr>
+                <td>
+                    <h4><i>Prompted Text Generation</i></h4>
+                    <p>
+                        ‣ An overview paragraph and features table are generated using <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/settings/config.toml#L28">detailed prompts</a>, embedded with project metadata.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/feature-table.png" alt="feature-table" />
+                </td>
+            </tr>
+        </table>
+    </details>
+</div>
+<br>
+<div>
+    <details>
+        <summary style="display: flex; align-items: center;">
+            <span style="font-size: 2.0em;"> ❹ Dynamic Usage Guides</span><br>
+        </summary>
+        <table>
+            <tr>
+                <td>
+                    <h4><i>Installation, Running, and Test</i></h4>
+                    <p>
+                        ‣ Generates instructions for installing, running, and testing your project. Instructions are created by identifying the codebase's top language and referring to our <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/settings/language_setup.toml">language_setup.toml</a> configuration file.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/usage-instructions.png" alt="usage-instructions" />
+                </td>
+            </tr>
+        </table>
+    </details>
+</div>
+<br>
+<div>
+    <details>
+        <summary style="display: flex; align-items: center;">
+            <span style="font-size: 2.0em;"> ❺ Additional README Sections</span><br>
+        </summary>
+        <table>
+            <tr>
+                <td>
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/roadmap.png" alt="roadmap" />
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/images/license.png" alt="license" />
+                </td>
+            </tr>
+        </table>
+    </details>
+</div>
+<br>
+<div>
+<details>
+    <summary style="display: flex; align-items: center;">
+        <span style="font-size: 2.0em;">❻ Templates (coming soon)</span><br>
+    </summary>
+    <table>
+        <tr>
+            <td>
+                <p>‣ Developing CLI option letting users select from a variety of README styles</p>
+                <p>‣ Templates for use-cases such as data, machine learning, web development, and more!</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>AI and ML README Template Concept</h3>
+                <ul>
+                    <li><strong><a href="#overview">Overview</a></strong>: Summary of the projects' objectives, scope, and expected outcomes.</li>
+                    <li><strong><a href="#project-structure">Project Structure</a></strong>: Overview of the organization of the projects and their main components.</li>
+                    <li><strong><a href="#data-collection-and-preprocessing">Data Preprocessing</a></strong>: Data sources, collection methods, and types of data</li>
+                    <li><strong><a href="#feature-engineering">Feature Engineering</a></strong>: Importance of feature engineering and its impact on model performance.</li>
+                    <li><strong><a href="#model-architecture-and-development">Model Architecture and Development</a></strong>: Model selection, dev strategies, and implemented algorithms.</li>
+                    <li><strong><a href="#training-and-validation">Training and Validation</a></strong>: Info on model training procedures, hyperparameter tuning, and validation strategies.</li>
+                    <li><strong><a href="#testing-and-evaluation">Testing and Evaluation</a></strong>: Model testing results, performance analysis, and comparison with benchmarks.</li>
+                    <li><strong><a href="#deployment-and-integration">Deployment and Integration</a></strong>: Integration with other systems, APIs, and user interfaces</li>
+                    <li><strong><a href="#usage-and-maintenance">Usage and Maintenance</a></strong>: User guide on how to use the deployed models and interfaces.</li>
+                    <li><strong><a href="#results-and-discussion">Results and Discussion</a></strong>: Implications, limitations, and future work.</li>
+                    <li><strong><a href="#ethical-considerations">Ethical Considerations</a></strong>: Ethical aspects, data privacy, and fairness in model predictions.</li>
+                    <li><strong><a href="#contributing">Contributing</a></strong>: Procedures for submitting contributions, reporting issues, and proposing enhancements.</li>
+                    <li><strong><a href="#acknowledgements">Acknowledgements</a></strong>: References to resources, libraries, and frameworks used.</li>
+                    <li><strong><a href="#license">License</a></strong>: Explanation of usage rights, restrictions, and attribution requirements.</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</details>
+</div>
+<br>
+<div>
+    <details>
+        <summary style="display: flex; align-items: center;">
+            <span style="font-size: 2.0em;"> ❼ Example README Files</span><br>
+        </summary>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Output File</th>
+                    <th>Repository</th>
+                    <th>Languages</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-python.md">readme-python.md</a></td>
+                    <td><a href="https://github.com/eli64s/readme-ai">readme-ai</a></td>
+                    <td>Python</td>
+                </tr>
+                <tr>
+                    <td>2️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-typescript.md">readme-typescript.md</a></td>
+                    <td><a href="https://github.com/Yuberley/ChatGPT-App-React-Native-TypeScript">chatgpt-app-react-typescript</a></td>
+                    <td>TypeScript, React</td>
+                </tr>
+                <tr>
+                    <td>3️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-javascript.md">readme-javascript.md</a></td>
+                    <td><a href="https://github.com/idosal/assistant-chat-gpt-javascript">(repository deleted)</a></td>
+                    <td>JavaScript, React</td>
+                </tr>
+                <tr>
+                    <td>4️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-kotlin.md">readme-kotlin.md</a></td>
+                    <td><a href="https://github.com/rumaan/file.io-Android-Client">file.io-android-client</a></td>
+                    <td>Kotlin, Java, Android</td>
+                </tr>
+                <tr>
+                    <td>5️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-rust-c.md">readme-rust-c.md</a></td>
+                    <td><a href="https://github.com/DownWithUp/CallMon">rust-c-app</a></td>
+                    <td>C, Rust</td>
+                </tr>
+                <tr>
+                    <td>6️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-go.md">readme-go.md</a></td>
+                    <td><a href="https://github.com/olliefr/docker-gs-ping">go-docker-app</a></td>
+                    <td>Go</td>
+                </tr>
+                <tr>
+                    <td>7️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-java.md">readme-java.md</a></td>
+                    <td><a href="https://github.com/avjinder/Minimal-Todo">java-minimal-todo</a></td>
+                    <td>Java</td>
+                </tr>
+                <tr>
+                    <td>8️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-fastapi-redis.md">readme-fastapi-redis.md</a></td>
+                    <td><a href="https://github.com/FerrariDG/async-ml-inference">async-ml-inference</a></td>
+                    <td>Python, FastAPI, Redis</td>
+                </tr>
+                <tr>
+                    <td>9️⃣</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-mlops.md">readme-mlops.md</a></td>
+                    <td><a href="https://github.com/GokuMohandas/mlops-course">mlops-course</a></td>
+                    <td>Python, Jupyter</td>
+                </tr>
+                <tr>
+                    <td>🔟</td>
+                    <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-pyflink.md">readme-pyflink.md</a></td>
+                    <td><a href="https://github.com/eli64s/flink-flow">flink-flow</a></td>
+                    <td>PyFlink</td>
+                </tr>
+            </tbody>
+        </table>
+    </details>
+</div>
+<br>
 
 <p align="right">
-    <a href="#top"><b>🔝 Return</b></a>
+  <a href="#top"><b>Return </b></a>
 </p>
 
 ---
 
-## 👩‍💻 Usage
+## 👩‍💻 Getting Started
 
 ***Dependencies***
 
 Please ensure you have the following dependencies installed on your system:
 
-- *Python version 3.9 or higher*
-- *Package manager (i.e. pip, conda, poetry) or Docker*
+- *Python 3.9+*
+- *Pip, Docker, Poetry, Pipenv, or Conda*
 - *OpenAI API paid account and API key*
 
 <br>
 
 ***Repository***
 
-A remote repository URL or path to your local project's directory is needed to use *readme-ai*. The following repository types are currently supported:
+A remote repository URL or local directory path to your project is needed to use *readme-ai*. The following platforms are currently supported:
 - *GitHub*
 - *GitLab*
+- *Bitbucket*
 - *File System*
 
 <br>
@@ -328,191 +388,256 @@ An OpenAI API account and API key are needed to use *readme-ai*. The steps below
 
 3. **Paid Account Recommended**: Setting up a paid account with OpenAI is highly recommended to avoid potential issues. Without a payment method on file, your API usage will be restricted to base GPT-3 models. This limitation can result in less accurate README file generation and may lead to API errors due to request limits.
 
-4. **Runtime Considerations**: README file generation typically takes less than a minute. If the process exceeds a few minutes (e.g., 3 minutes), it's advisable to terminate *readme-ai* to prevent extended processing times.
-
 </details>
 
 ---
 
-### 🛠 Installation
+### 📦 Installation
 
-***Using Pip***
-
-Pip is the recommended installation method for most users.
-
-```sh
-pip install --upgrade readmeai
+Using `pip`
+```bash
+pip install readmeai
 ```
+
 <br>
 
-***Using Docker***
-
-Docker is recommended for users wanting to run the application in a containerized environment.
-
-```sh
+Using `docker`
+```bash
 docker pull zeroxeli/readme-ai:latest
 ```
 
 <br>
 
-<details><summary><b><i>Manually Install</i></b></summary>
+Using `conda`
+```bash
+conda install -c conda-forge readmeai
+```
 
 <br>
 
-1️⃣ Clone the readme-ai repository.
-```sh
-git clone https://github.com/eli64s/readme-ai
-```
+Alternatively, clone the readme-ai repository and build from source.
 
-2️⃣ Navigate to readme-ai directory.
-
-```sh
+```bash
+git clone https://github.com/eli64s/readme-ai && \
 cd readme-ai
 ```
 
-3️⃣ Install dependencies using a method below.
+<br>
 
-***Using Bash***
-```sh
+Then use one of the methods below to install the project's dependencies (Bash, Conda, Pipenv, or Poetry).
+
+Using `bash`
+```bash
 bash setup/setup.sh
 ```
 
-***Using Conda***
-```sh
-conda create -n readmeai python=3.9 -y && \
-conda activate readmeai && \
-pip install -r requirements.txt
+<br>
+
+Using `pipenv`
+```bash
+pipenv install && \
+pipenv shell
 ```
 
-***Using Poetry***
-```sh
-poetry install
-```
+<br>
 
-</details>
+Using `poetry`
+```bash
+poetry install && \
+poetry shell
+```
 
 ---
 
 ### ⚙️ Configuration
 
-<br>
-
-***Command-Line Arguments***
-
 To generate a *README.md* file, use the `readmeai` command in your terminal, along with the arguments below.
 
-| Short Flag | Long Flag      | Description                                       | Status       |
-|------------|----------------|---------------------------------------------------|--------------|
-| `-k`       | `--api-key`    | Your OpenAI API key.                              | Required     |
-| `-o`       | `--output`     | The output path for your README.md file.          | Required     |
-| `-r`       | `--repository` | The URL or path to your code repository.          | Required     |
-| `-t`       | `--template`   | The README template format to use. (coming soon!) | Coming Soon! |
-| `-l`       | `--language`   | The language of text written in the README file.  | Coming Soon! |
+| Short Flag | Long Flag       | Description                                                    | Type        | Status       |
+|------------|-----------------|----------------------------------------------------------------|-------------|--------------|
+| `-k`       | `--api-key`     | Your language model API secret key.                            | String      | Optional     |
+| `-b`       | `--badges`      | [Badge style](https://shields.io/badges) options for output file. See below for [more details](https://github.com/eli64s/readme-ai#badge-style-cli-options)     | String      | Optional     |
+| `-e`       | `--emojis`      | Use ```false``` to remove emojis from README default template. | Boolean     | Optional     |
+| `-f`       | `--offline`     | Use ```true``` to run README-AI without an API key.            | Boolean     | Optional     |
+| `-m`       | `--model`       | Default large language model is the `gpt-4` engine.    | String      | Optional     |
+| `-o`       | `--output`      | The output path for your README.md file.                       | Path/String | Optional     |
+| `-r`       | `--repository`  | The URL or path to your code repository.                       | URL/String  | Required     |
+| `-t`       | `--temperature` | The temperature (randomness) of the model responses.           | Float       | Optional     |
+| `-l`       | `--language`    | The language of text to write README in.                       | String      | Coming Soon! |
+| `-s`       | `--style`       | The README template style to build.                            | String      | Coming Soon! |
 
 <br>
+<h4 style="text-align:left">Badge Style CLI Options</h4>
+<table border="1">
+    <thead>
+        <tr>
+            <th>--badges</th>
+            <th>svg icon</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>flat-square</code></td>
+            <td><img src="https://img.shields.io/badge/Python-3776AB.svg?&style=flat-square&logo=Python&logoColor=white" alt="Python flat-square" /></td>
+        </tr>
+        <tr>
+            <td><code>plastic</code></td>
+            <td><img src="https://img.shields.io/badge/Python-3776AB.svg?&style=plastic&logo=Python&logoColor=white" alt="Python plastic" /></td>
+        </tr>
+        <tr>
+            <td><code>for-the-badge</code></td>
+            <td><img src="https://img.shields.io/badge/Python-3776AB.svg?&style=for-the-badge&logo=Python&logoColor=white" alt="Python for-the-badge" /></td>
+        </tr>
+        <tr>
+            <td><code>social</code></td>
+            <td><img src="https://img.shields.io/badge/Python-3776AB.svg?&style=social&logo=Python&logoColor=white" alt="Python social" /></td>
+        </tr>
+        <tr>
+            <td><code>flat</code></td>
+            <td><img src="https://img.shields.io/badge/Python-3776AB.svg?&style=flat&logo=Python&logoColor=white" alt="Python flat" /></td>
+        </tr>
+        <tr>
+          <td><code>apps</code></td>
+          <td>
+          <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=py" /></a>
+          </td>
+        </tr>
+        <tr>
+          <td><code>apps-light</code></td>
+          <td>
+          <a href="https://skillicons.dev"><img src="https://skillicons.dev/icons?i=py&theme=light" /></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 ***Custom Settings***
 
-To customize the README file generation process, you can modify the following sections of the [configuration file:](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml)
+To customize the README file generation process, you can modify the project's [configuration file:](https://github.com/eli64s/readme-ai/blob/main/readmeai/settings/config.toml)
 
-- [*api*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L2) - OpenAI language model API configuration settings.
-- [*git*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L12) - Default git repository settings used if no repository is provided.
-- [*paths*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L17) - Directory paths and files used by the *readme-ai* application.
-- [*prompts*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L26) - Large language model prompts used to generate the README file.
-- [*md*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L59) - Dynamic Markdown section code templates used to build the README file.
+- **api**: OpenAI language model API configuration settings.
+- **base_urls**: Base URLs for supported remote repository platforms.
+- **cli**: CLI option settings used by the *readme-ai* application.
+- **git**: Default git repository settings used if no repository is provided.
+- **paths**: Directory paths and files used by the *readme-ai* application.
+- **prompts**: Large language model prompts used to generate the README file.
+- **md**: Dynamic Markdown section code templates used to build the README file.
 
 ---
 
 ### 🚀 Running *README-AI*
 
-<br>
+First, add your OpenAI API key to environment variables.
 
-***Using Streamlit***
-
-Use the app directly in your browser via Streamlit Community Cloud.
-
-- [🛸 Take me to *readme-ai* on Streamlit!](https://readmeai.streamlit.app/)
-
-<br>
-
-***Using Pip***
-
-```sh
-# Option 1: Run readmeai command with all required command-line arguments.
-readmeai --api-key "YOUR_API_KEY" --output readme-ai.md --repository https://github.com/eli64s/readme-ai
-```
-```sh
-# Option 2: Run readmeai command with OpenAI API key set as environment variable.
-export OPENAI_API_KEY="YOUR_API_KEY"
-readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
+On `Linux/MacOS`
+```bash
+export OPENAI_API_KEY=YOUR_API_KEY
 ```
 
+On `Windows`
+```bash
+set OPENAI_API_KEY=YOUR_API_KEY
+```
+
+Next, use one of the methods below to run the application.
+
+Using `pip`
+```bash
+readmeai --output readme-ai.md --repository https://github.com/eli64s/readme-ai
+```
+
+Below we use `short flags` in the command, setting badge style to `-b flat-square`, and removing emojis `-e false` from the output file.
+
+```bash
+readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai -b flat-square -e false
+```
+
+Additionally, you can run readme-ai in offline mode without an API key.
+
+```bash
+readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai --offline true
+```
+
+Offline mode example [README.md](https://github.com/eli64s/readme-ai/blob/main/examples/markdown/readme-offline.md)
+
 <br>
 
-***Using Docker***
+Using `docker`
 
-```sh
-# Option 1: Run Docker container with all required command-line arguments.
-docker run -it \
--e OPENAI_API_KEY="YOUR_API_KEY" \
--v "$(pwd)":/app zeroxeli/readme-ai:latest \
-readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
-```
-```sh
-# Option 2: Run Docker container with OpenAI API key set as environment variable.
-export OPENAI_API_KEY="YOUR_API_KEY"
+```bash
 docker run -it \
 -e OPENAI_API_KEY=$OPENAI_API_KEY \
 -v "$(pwd)":/app zeroxeli/readme-ai:latest \
-readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
+-r https://github.com/eli64s/readme-ai
 ```
 
 <br>
 
-<details><summary><b><i>Manually Run</i></b></summary>
-
-<br>
-
-***Using Conda***
-```sh
-conda activate readmeai
-export OPENAI_API_KEY="YOUR_API_KEY"
-python readmeai/main.py -o readme-ai.md -r https://github.com/eli64s/readme-ai
+Using `conda`
+```bash
+readmeai -r https://github.com/eli64s/readme-ai
 ```
 
 <br>
 
-***Using Poetry***
-```sh
-poetry shell
-export OPENAI_API_KEY="YOUR_API_KEY"
-poetry run python readmeai/main.py -o readme-ai.md -r https://github.com/eli64s/readme-ai
+Using `pipenv`
+```bash
+pipenv shell && \
+python3 -m readmeai.cli.commands -o readme-ai.md -r https://github.com/eli64s/readme-ai
 ```
 
-</details>
+<br>
+
+Using `poetry`
+```bash
+poetry shell && \
+poetry run python3 -m readmeai.cli.commands -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+
+<br>
+
+Using `streamlit`
+
+Try <em>readme-ai</em> in your browser, no installation required!
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://readmeai.streamlit.app/)
+
+> [!NOTE]
+>
+> App is hosted on the <a href="https://streamlit.io/">Streamlit Community Cloud</a> and may be unavailable at times.
+>
+> For more details about application, see the <a href="https://github.com/eli64s/readmeai-ui">readmeai-ui</a> repository.
 
 ---
 
 ### 🧪 Tests
 
-Execute the test suite using the command below.
-
+Run tests via pytest.
 ```sh
-bash scripts/test.sh
+make test
+```
+
+Run tests against multiple Python versions *`(3.9, 3.10, 3.11, 3.12)`* via nox.
+```sh
+nox -f noxfile.py
 ```
 
 ---
 
-## 🛣 Roadmap
+## 🛠 Project Roadmap
 
-- [X] Publish project as a Python library via PyPI and a Docker image on Docker Hub.
+- [X] Publish project as a Python library via PyPI for easy installation.
   - [*PyPI - readmeai*](https://pypi.org/project/readmeai/)
+- [X] Make project available as a Docker image on Docker Hub.
   - [*Docker Hub - readme-ai*](https://hub.docker.com/repository/docker/zeroxeli/readme-ai/general)
-- [X] Integrate and deploy app with Streamlit to provide a simple user-interface for using the tool.
+- [X] Integrate and deploy app with Streamlit to make tool more widely accessible.
   - [*Streamlit Community Cloud - readmeai*](https://readmeai.streamlit.app/)
-- [ ] Develop GitHub Actions script to automatically update the README file when new code is pushed.
-- [ ] Design README output templates for a variety of use-cases (i.e. data, web-dev, minimal, etc.)
+- [ ] Refactor our large language model engine to enable more robust README generation.
+  - [ ] Explore [LangChain 🦜️🔗](https://python.langchain.com/docs/get_started/introduction) as an alternative to using the OpenAI API directly.
+  - [ ] Explore [LlamaIndex 🦙](https://gpt-index.readthedocs.io/en/stable/index.html) framework and Retrieval Augmented Generation (RAG) paradigm.
+- [ ] Building template system to create README files for specific use-cases (data, mobile, web, etc.)
 - [ ] Add support for generating README files in any language (i.e. CN, ES, FR, JA, KO, RU).
+- [ ] Develop GitHub Actions script to automatically update the README file when new code is pushed.
 
 ---
 
@@ -524,7 +649,9 @@ bash scripts/test.sh
 
 ## 🤝 Contributing
 
-[Contributing Guidelines](https://github.com/eli64s/readme-ai/blob/main/CONTRIBUTING.md)
+- [Discussions](https://github.com/eli64s/readme-ai/discussions)
+- [Open an Issue](https://github.com/eli64s/readme-ai/issues)
+- [Contributing Guidelines](https://github.com/eli64s/readme-ai/blob/main/CONTRIBUTING.md)
 
 ---
 
@@ -540,13 +667,11 @@ bash scripts/test.sh
   - [Shields.io](https://shields.io/)
   - [Aveek-Saha/GitHub-Profile-Badges](https://github.com/Aveek-Saha/GitHub-Profile-Badges)
   - [Ileriayo/Markdown-Badges](https://github.com/Ileriayo/markdown-badges)
+  - [tandpfun/skill-icons](https://github.com/tandpfun/skill-icons)
+
 
 <p align="right">
-  <a href="#top"><b>🔝 Return </b></a>
+  <a href="#top"><b>Return</b></a>
 </p>
 
 ---
-
-For a complete solution, you would likely need to create a custom Streamlit component using React, which would involve a more complex setup including setting up a React app, creating the drag-and-drop functionality using a library like react-beautiful-dnd, and then integrating this React app into your Streamlit app as a custom component.
-
-Creating a fully-featured README builder with a drag-and-drop interface as described in your request would be a complex project that would likely require a significant amount of time and expertise in both frontend development and Streamlit.
