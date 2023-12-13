@@ -1,4 +1,4 @@
-"""Streamlit app for README-AI."""
+"""Streamlit application serving the readme-ai package."""
 
 import logging
 import os
@@ -7,7 +7,6 @@ import subprocess
 import streamlit as st
 
 logging.basicConfig(level=logging.INFO)
-
 
 
 def init_session_state():
@@ -20,38 +19,66 @@ def init_session_state():
 
 def get_user_inputs():
     """Collect user inputs from the sidebar."""
-
     with st.sidebar:
-        st.header("**:blue[Configuration]**")
-        api_key = st.text_input("**OpenAI API Key**", type="password")
-        repo_path = st.text_input("**Repository**", "")
-        output_path = "readmeai.md"
+        st.header("Configuration")
+        api_key = st.text_input("OpenAI API Key", type="password")
+        repo_path = st.text_input("Repository Path", "")
+        output_path = st.text_input("Output Path", "readmeai.md")
 
-        col1, col2 = st.columns([1, 1])
-
-        with col1:
-            generate_readme = st.button("**:green[Run]**", key="sidebar_button",use_container_width=True)
-        
-        with col2:
-            reset_session = st.button("**:red[Clear]**",use_container_width=True)
-            if reset_session:
-                st.session_state.readme_generated = False
-                st.session_state.readme_content = ""
-                st.experimental_rerun()
-                
-        resource_text = (
-            f"""\
-                > ## **:blue[Resources]**
-                > - [GitHub](https://github.com/eli64s/readme-ai)
-                > - [PyPI](https://pypi.org/project/readmeai/)
-                > - [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
-            """
+        badge_style = st.selectbox(
+            "Badge Style",
+            [
+                "flat",
+                "flat-square",
+                "plastic",
+                "for-the-badge",
+                "social",
+                "apps",
+                "apps-light",
+            ],
+            index=0,  # default selection (flat)
+            help="Select badge style for the output file.",
         )
-        st.divider()
-        st.markdown(resource_text)
 
-    return api_key, output_path, repo_path, generate_readme
+        use_emojis = st.checkbox(
+            "Use Emojis",
+            value=True,  # default checked
+            help="Include emojis in the README file.",
+        )
 
+        run_offline = st.checkbox(
+            "Run Offline",
+            value=False,  # default unchecked
+            help="Run README-AI without an API key.",
+        )
+
+        generate_readme = st.button("Run", key="sidebar_button")
+        reset_session = st.button("Clear")
+
+        if reset_session:
+            st.session_state.readme_generated = False
+            st.session_state.readme_content = ""
+            st.experimental_rerun()
+
+        st.markdown(
+            """
+            ## Resources
+            - [GitHub](https://github.com/eli64s/readme-ai)
+            - [PyPI](https://pypi.org/project/readmeai/)
+            - [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
+            """,
+            unsafe_allow_html=True,
+        )
+
+    return (
+        api_key,
+        output_path,
+        repo_path,
+        badge_style,
+        use_emojis,
+        run_offline,
+        generate_readme,
+    )
 
 
 def execute_command(command, path):
@@ -68,48 +95,56 @@ def execute_command(command, path):
             if stderr_line:
                 stderr_accumulated += stderr_line
                 output_container.text_area(
-                    "*Logging README-AI execution*",
+                    "Logging README-AI execution",
                     value=stderr_accumulated,
                     height=250,
                 )
             if process.poll() is not None:
                 break
-            if not stderr_line and process.poll() is not None:
-                break 
 
 
 def display_readme_output(output_path):
     """Display the generated README content and provide a download link."""
-    st.markdown("### *Output*")
-    tab1, tab2, tab3 = st.tabs(["Preview File", "Download File", "Copy Markdown"])
-    tab1.markdown(st.session_state.readme_content, unsafe_allow_html=True)
-    tab2.download_button(
-            label=f"**Download :rainbow[{output_path}]**",
+    st.markdown("### Output")
+    with st.expander("Preview File"):
+        st.markdown(st.session_state.readme_content, unsafe_allow_html=True)
+    with st.expander("Download File"):
+        st.download_button(
+            label="Download README",
             data=st.session_state.readme_content,
             file_name=output_path,
             mime="text/markdown",
         )
-    tab3.code(st.session_state.readme_content, language="markdown", line_numbers=True)
+    with st.expander("Copy Markdown"):
+        st.code(st.session_state.readme_content, language="markdown")
 
 
 def main():
     init_session_state()
-    st.set_page_config(page_title="Streamlit | README-AI", layout="centered")
-    st.title(":rainbow[README-AI]")
-    title_text = ("🚀 Automated README generation from the terminal, powered by GPT 🪐")
-    st.markdown(title_text)
+    st.set_page_config(page_title="README-AI", layout="centered")
+    st.title("README-AI")
+    st.markdown("🚀 Automated README generation from the terminal, powered by GPT 🪐")
 
-    api_key, output_path, repo_path, generate_readme = get_user_inputs()
-    output_path = output_path if output_path else "readmeai.md"
+    (
+        api_key,
+        output_path,
+        repo_path,
+        badge_style,
+        use_emojis,
+        run_offline,
+        generate_readme,
+    ) = get_user_inputs()
 
-    if generate_readme and api_key:
-        os.environ["OPENAI_API_KEY"] = api_key
-        command = ["readmeai"]
+    if generate_readme:
+        command = ["readmeai", "--output", output_path, "--repository", repo_path]
 
-        if output_path:
-            command.extend(["--output", output_path])
-        if repo_path:
-            command.extend(["--repository", repo_path])
+        # Include conditions and additional flags based on new inputs
+        if not run_offline:
+            os.environ["OPENAI_API_KEY"] = api_key
+
+        command.extend(["--badges", badge_style])
+        command.extend(["--emojis", str(use_emojis).lower()])
+        command.extend(["--offline", str(run_offline).lower()])
 
         try:
             execute_command(command, repo_path)

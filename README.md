@@ -1,35 +1,47 @@
 <div align="center">
-<h1 align="center">
-    <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="80" />
-    <img src="https://img.icons8.com/?size=512&id=kTuxVYRKeKEY&format=png" width="80" />
-    <br>READMEAI-UI
-</h1>
-<h3>◦ Unleash your READMEs potential with README-AI.</h3>
-<h3>◦ Developed with the software and tools listed below.</h3>
-
-<p align="center">
-<img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?logo=Streamlit&logoColor=white", alt="Streamlit" />
-<img src="https://img.shields.io/badge/OpenAI-412991.svg?logo=OpenAI&logoColor=white" alt="OpenAI" />
-<img src="https://img.shields.io/badge/Python-3776AB.svg?logo=Python&logoColor=white" alt="Python" />
-<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash" />
-<img src="https://img.shields.io/badge/Markdown-000000.svg?logo=Markdown&logoColor=white" alt="Markdown" />
-</p>
-<img src="https://img.shields.io/github/languages/top/eli64s/readmeai-ui?style&color=5D6D7E" alt="GitHub top language" />
-<img src="https://img.shields.io/github/languages/code-size/eli64s/readmeai-ui?style&color=5D6D7E" alt="GitHub code size in bytes" />
-<img src="https://img.shields.io/github/commit-activity/m/eli64s/readmeai-ui?style&color=5D6D7E" alt="GitHub commit activity" />
-<img src="https://img.shields.io/github/license/eli64s/readmeai-ui?style&color=5D6D7E" alt="GitHub license" />
+    <h1 align="center">
+        <img src="https://img.icons8.com/?size=512&id=55494&format=png" width="80" />
+        <img src="https://img.icons8.com/?size=512&id=kTuxVYRKeKEY&format=png" width="80" />
+        <br>README-AI
+    </h1>
+    <h3>◦ Generate beautiful and informative <i>README</i> files</h3>
+    <h3>◦ Developed with OpenAI's GPT language model APIs</h3>
+    <br>
+    <p align="center">
+        <img src="https://img.shields.io/badge/Markdown-000000.svg?stylee&logo=Markdown&logoColor=white" alt="Markdown" />
+        <img src="https://img.shields.io/badge/OpenAI-412991.svg?stylee&logo=OpenAI&logoColor=white" alt="OpenAI" />
+        <img src="https://img.shields.io/badge/Python-3776AB.svg?stylee&logo=Python&logoColor=white" alt="Python" />
+        <img src="https://img.shields.io/badge/Pytest-0A9EDC.svg?stylee&logo=Pytest&logoColor=white" alt="pytest" />
+        <img src="https://img.shields.io/badge/Docker-2496ED.svg?style&logo=Docker&logoColor=white" alt="Docker" />
+        <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style&logo=GitHub-Actions&logoColor=white" alt="actions" />
+    </p>
+    <a href="https://pypi.org/project/readmeai/">
+        <img src="https://img.shields.io/pypi/v/readmeai?color=5D6D7E&logo=pypi" alt="pypi-version" />
+    </a>
+    <a href="https://pypi.org/project/readmeai/">
+        <img src="https://img.shields.io/pypi/pyversions/readmeai?color=5D6D7E&logo=python" alt="pypi-python-version" />
+    </a>
+    <a href="https://pypi.org/project/readmeai/">
+        <img src="https://img.shields.io/pypi/dm/readmeai?color=5D6D7E" alt="pypi-downloads" />
+    </a>
+    <img src="https://img.shields.io/github/license/eli64s/readme-ai?color=5D6D7E" alt="github-license" />
 </div>
 
 ---
 
-## 📒 Table of Contents
-- [📒 Table of Contents](#-table-of-contents)
+## 📖 Table of Contents
+
+- [📖 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
-- [⚙️ Features](#️-features)
-- [📂 Project Structure](#-project-structure)
-- [🧩 Modules](#-modules)
-- [🚀 Getting Started](#-getting-started)
-- [🗺 Roadmap](#-roadmap)
+- [🤖 Demos](#-demos)
+- [📦 Features](#-features)
+- [👩‍💻 Usage](#-usage)
+  - [🛠 Installation](#-installation)
+  - [⚙️ Configuration](#️-configuration)
+  - [🚀 Running *README-AI*](#-running-readme-ai)
+  - [🧪 Tests](#-tests)
+- [🛣 Roadmap](#-roadmap)
+- [📒 Changelog](#-changelog)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 - [👏 Acknowledgments](#-acknowledgments)
@@ -38,80 +50,503 @@
 
 ## 📍 Overview
 
-This repository is a Streamlit app that generates README files for coding projects using OpenAI's GPT language model APIs. With user inputs, commands execution, and generated content previewing, it offers an efficient and seamless user experience. The app's core functionalities include integrating with GPT language model APIs, providing session reset, download options, and utility functions for a streamlined experience. This project aims to automate the process of creating high-quality README files, saving developers time and effort while ensuring beautiful and effective documentation for their projects.
+*README-AI* is a powerful command-line tool that generates robust README.md files for your software and data projects. By simply providing a remote repository URL or path to your codebase, this tool auto-generates documentation for your entire project, leveraging the capabilities OpenAI's GPT language model APIs.
+
+**🎯 Motivation**
+
+Simplifies the process of writing and maintaining high-quality project documentation, enhancing developer productivity and workflow. The ultimate goal of *readme-ai* is to improve the adoption and usability of open-source software, enabling all skill levels to better understand complex codebases and easily use open-source tools.
+
+**⚠️ Disclaimer**
+
+This project is currently under development and has an opinionated configuration. While *readme-ai* provides an excellent starting point for documentation, its important to review all text generated by the OpenAI API to ensure it accurately represents your codebase.
 
 ---
 
-## ⚙️ Features
+## 🤖 Demos
 
-| Feature                | Description                           |
-| ---------------------- | ------------------------------------- |
-| **⚙️ Architecture**     | The codebase follows a modular architecture with separation of concerns between the Streamlit app, utility functions, and script files. It uses a client-server architecture for generating README files and utilizes the OpenAI GPT language model APIs for content generation.    |
-| **📖 Documentation**   | The codebase lacks detailed documentation. Although the filenames provide some insight into the purpose of each file, a more comprehensive overview of the functionality and usage would be beneficial for developers.    |
-| **🔗 Dependencies**    | The codebase depends on several external libraries like Streamlit for the app's UI, requests for API communication, and Click for command-line interface handling. It also relies on the OpenAI GPT language model APIs for content generation.    |
-| **🧩 Modularity**      | The codebase showcases a good level of modularity. The separation of the Streamlit app, utility functions, and script files into distinct modules contributes to this modularity. Moreover, these components are relatively interchangeable and can be extended or modified independently.    |
-| **✔️ Testing**          | The codebase does not have specific tests in place, which is a limitation. Implementing unit tests using frameworks like pytest to validate critical sections, such as utility functions and API interactions, would increase confidence in the application's functionality.    |
-| **⚡️ Performance**      | The performance of the system highly depends on the speed and efficiency of the OpenAI GPT language model API for generating README content. Other parts of the application appear to be lightweight, and the absence of complex computations suggests overall satisfactory performance.    |
-| **🔐 Security**        | The codebase does not include specific measures for security. While there are no glaring security risks in the provided code, integrating security practices like input sanitization and authorization checks may enhance the system's security profile.    |
-| **🔀 Version Control** | The codebase utilizes Git for version control. However, it lacks explicit information about branching, commit practices, and pull request workflows that developers follow. Establishing guidelines for version control processes would improve collaboration and ensure codebase integrity.    |
-| **🔌 Integrations**    | The app interacts with the OpenAI GPT language model APIs for generating readme content. The Streamlit framework integrates with various Python ecosystem libraries, providing opportunities for additional integrations to enhance functionality or implement custom features.   |
-| **📶 Scalability**     | With the use of external dependencies like Streamlit and OpenAI GPT, the codebase has the potential to scale horizontally as demand grows. Leveraging the APIs' scalability and extending functionalities using modular components, the system can handle increased users and integration requirements with ease.   |
+<h3 align="center">► Command-Line Interface</h3>
+<br>
+<table align="center">
+    <tr>
+        <td>
+            <a href="https://youtu.be/p9qPjm0l4Q4">
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/cli-demo.png" alt="cli-demo" />
+            </a>
+        </td>
+    </tr>
+</table>
+<br>
+<h3 align="center">☁ Streamlit Community Cloud</h3>
+<br>
+<table align="center">
+    <tr>
+        <td>
+            <p>
+                ‣ Use <i>readme-ai</i> directly in your browser with Streamlit! Zero installation, zero code!
+            </p>
+            <p>
+                ‣ <a href="https://readmeai.streamlit.app/">🛸 Take me to <i>readme-ai</i> on Streamlit!</a>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        <a href="https://youtu.be/4xuqltFDfCo">
+        <img src="https://github.com/eli64s/readme-ai/blob/main/examples/imgs/streamlit-demo.png?raw=true" alt="streamlit-demo" />
+        </a>
+        </td>
+    </tr>
+</table>
+<br>
+
+---
+## 📦 Features
+
+<h1 align="center">⒈<br>👇<br><br>🎖 Introduction and Badges</h1>
+<table align="center">
+    <tr>
+        <td>
+            <h3>Project Slogan and Badges</h3>
+            <p>
+                ‣ A slogan to highlight your poject is generated by <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L56">prompting</a> OpenAI's GPT engine.
+            </p>
+            <p>
+                ‣ Codebase dependencies and metadata are visualized using <a href="https://shields.io/">Shields.io</a> badges.
+            </p>
+            <!--<p>‣ Badges are sorted by hex code, displayed from light to dark hues.</p>-->
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/badges.png" alt="badges" />
+        </td>
+    </tr>
+</table>
+
+<h1 align="center">⒉<br>👇<br><br>📃 Codebase Documentation</h1>
+<table align="center">
+    <tr>
+        <h3>Directory Tree and File Summaries</h3>
+        <p>
+            ‣ Your project's directory structure is visualized using the <i>tree</i> command.
+        </p>
+        <p>
+            ‣ Each file in the codebase is summarized by OpenAI's <i>GPT</i> model.
+        </p>
+    </tr>
+    <tr>
+        <td align="center">
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/repository-tree.png" alt="repository-tree" />
+        </td>
+        <td align="center">
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/code-summaries.png" alt="code-summaries" />
+        </td>
+    </tr>
+</table>
+
+<h1 align="center">⒊<br>👇<br><br>🧚 Overview and Features Table</h1>
+<table align="center">
+    <tr>
+        <td>
+            <h3>Prompted Text Generation</h3>
+            <p>
+                ‣ An overview paragraph and features table are generated using <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L31">detailed prompts</a>, embedded with project metadata.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/feature-table.png" alt="feature-table" />
+        </td>
+    </tr>
+</table>
+
+<h1 align="center">⒋<br>👇<br><br>🔧 Dynamic Usage Instructions</h1>
+<table align="center">
+    <tr>
+        <td>
+            <h3>Installation, Running, and Test</h3>
+            <p>
+                ‣ Creates instructions for installation, running, and testing your project based on the language of your codebase.
+            </p>
+            <p>
+                ‣ Instructions are created by identifying the codebase's top language and referring to our <a href="https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/language_setup.toml">language_setup.toml</a> configuration file.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/usage-instructions.png" alt="usage-instructions" />
+        </td>
+    </tr>
+</table>
+
+<h1 align="center">⒌<br>👇<br><br>📝 Contributing Guidelines and more!</h1>
+<table align="center">
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/roadmap.png"
+            alt="roadmap" />
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <td>
+            <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/imgs/license.png"
+            alt="license" />
+        </td>
+    </tr>
+</table>
+
+<h1 align="center">⒍<br>👇<br><br>🪄 Example Output Files</h1>
+<div align="center">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Output File</th>
+                <th>Repository</th>
+                <th>Languages</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-python.md">readme-python.md</a></td>
+                <td><a href="https://github.com/eli64s/readme-ai">readme-ai</a></td>
+                <td>Python</td>
+            </tr>
+            <tr>
+                <td>2️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-typescript.md">readme-typescript.md</a></td>
+                <td><a href="https://github.com/Yuberley/ChatGPT-App-React-Native-TypeScript">chatgpt-app-react-typescript</a></td>
+                <td>TypeScript, React</td>
+            </tr>
+            <tr>
+                <td>3️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-javascript.md">readme-javascript.md</a></td>
+                <td><a href="https://github.com/idosal/assistant-chat-gpt-javascript">assistant-chat-gpt-javascript</a></td>
+                <td>JavaScript, React</td>
+            </tr>
+            <tr>
+                <td>4️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md">readme-kotlin.md</a></td>
+                <td><a href="https://github.com/rumaan/file.io-Android-Client">file.io-android-client</a></td>
+                <td>Kotlin, Java, Android</td>
+            </tr>
+            <tr>
+                <td>5️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-rust-c.md">readme-rust-c.md</a></td>
+                <td><a href="https://github.com/DownWithUp/CallMon">rust-c-app</a></td>
+                <td>C, Rust</td>
+            </tr>
+            <tr>
+                <td>6️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-go.md">readme-go.md</a></td>
+                <td><a href="https://github.com/olliefr/docker-gs-ping">go-docker-app</a></td>
+                <td>Go</td>
+            </tr>
+            <tr>
+                <td>7️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-java.md">readme-java.md</a></td>
+                <td><a href="https://github.com/avjinder/Minimal-Todo">java-minimal-todo</a></td>
+                <td>Java</td>
+            </tr>
+            <tr>
+                <td>8️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md">readme-fastapi-redis.md</a></td>
+                <td><a href="https://github.com/FerrariDG/async-ml-inference">async-ml-inference</a></td>
+                <td>Python, FastAPI, Redis</td>
+            </tr>
+            <tr>
+                <td>9️⃣</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-mlops.md">readme-mlops.md</a></td>
+                <td><a href="https://github.com/GokuMohandas/mlops-course">mlops-course</a></td>
+                <td>Python, Jupyter</td>
+            </tr>
+            <tr>
+                <td>🔟</td>
+                <td><a href="https://github.com/eli64s/readme-ai/blob/main/examples/readme-pyflink.md">readme-pyflink.md</a></td>
+                <td><a href="https://github.com/eli64s/flink-flow">flink-flow</a></td>
+                <td>PyFlink</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h1 align="center">⒎<br>👇<br><br>🎨 Custom <i>README</i> templates coming soon!</h1>
+<p align="center">‣ Developing a feature that allows users to select from a variety of README formats and styles.</p>
+<p align="center">‣ Templates will focus on use-cases such as web development, data, machine learning, minimal, and more!</p>
+
+<p align="right">
+    <a href="#top"><b>🔝 Return</b></a>
+</p>
 
 ---
 
+## 👩‍💻 Usage
 
-## 📂 Project Structure
+***Dependencies***
 
+Please ensure you have the following dependencies installed on your system:
 
+- *Python version 3.9 or higher*
+- *Package manager (i.e. pip, conda, poetry) or Docker*
+- *OpenAI API paid account and API key*
 
+<br>
 
----
+***Repository***
 
-## 🧩 Modules
+A remote repository URL or path to your local project's directory is needed to use *readme-ai*. The following repository types are currently supported:
+- *GitHub*
+- *GitLab*
+- *File System*
 
-<details closed><summary>Scripts</summary>
+<br>
 
-| File                                                                         | Summary                                                                                                                                                                                                             |
-| ---                                                                          | ---                                                                                                                                                                                                                 |
-| [clean.sh](https://github.com/eli64s/readmeai-ui/blob/main/scripts/clean.sh) | This code is a bash script that removes various types of files and directories, such as backup files, cache files and directories, VS Code settings, build artifacts, pytest cache, benchmarks, and specific files. |
+***OpenAI API***
+
+An OpenAI API account and API key are needed to use *readme-ai*. The steps below outline this process:
+
+<details closed><summary>🔐 OpenAI API - Setup Instructions</summary>
+
+1. Go to the [OpenAI website](https://platform.openai.com/).
+2. Click the "Sign up for free" button.
+3. Fill out the registration form with your information and agree to the terms of service.
+4. Once logged in, click on the "API" tab.
+5. Follow the instructions to create a new API key.
+6. Copy the API key and keep it in a secure place.
 
 </details>
 
-<details closed><summary>Src</summary>
+<details closed><summary>⚠️ OpenAI API - Cautionary Guidelines</summary>
 
-| File                                                                     | Summary                                                                                                                                                                                                                                                                                                                         |
-| ---                                                                      | ---                                                                                                                                                                                                                                                                                                                             |
-| [app.py](https://github.com/eli64s/readmeai-ui/blob/main/src/app.py)     | This Streamlit app generates beautiful README files for coding projects. It collects user inputs, executes commands, displays and allows for previewing generated README content. Integration with OpenAI's GPT language model APIs powers the generation process. The app provides session reset and download functionalities. |
-| [utils.py](https://github.com/eli64s/readmeai-ui/blob/main/src/utils.py) | The code consists of utility functions designed specifically for the Streamlit readmeai app. These functions facilitate the app's core functionalities, ensuring efficiency and seamless user experience.                                                                                                                       |
+1. **Review Sensitive Information**: Before running the application, ensure that all content in your repository is free of sensitive information. Please note that *readme-ai* does not filter out sensitive data from the README file, and it does not modify any files in your repository.
+
+2. **API Usage Costs**: The OpenAI API is not free, and you will be charged for each request made. Costs can accumulate rapidly, so it's essential to be aware of your usage. You can monitor your API usage and associated costs by visiting the [OpenAI API Usage Dashboard](https://platform.openai.com/account/usage).
+
+3. **Paid Account Recommended**: Setting up a paid account with OpenAI is highly recommended to avoid potential issues. Without a payment method on file, your API usage will be restricted to base GPT-3 models. This limitation can result in less accurate README file generation and may lead to API errors due to request limits.
+
+4. **Runtime Considerations**: README file generation typically takes less than a minute. If the process exceeds a few minutes (e.g., 3 minutes), it's advisable to terminate *readme-ai* to prevent extended processing times.
 
 </details>
 
 ---
 
-## 🚀 Getting Started
+### 🛠 Installation
 
+***Using Pip***
+
+Pip is the recommended installation method for most users.
+
+```sh
+pip install --upgrade readmeai
+```
+<br>
+
+***Using Docker***
+
+Docker is recommended for users wanting to run the application in a containerized environment.
+
+```sh
+docker pull zeroxeli/readme-ai:latest
+```
+
+<br>
+
+<details><summary><b><i>Manually Install</i></b></summary>
+
+<br>
+
+1️⃣ Clone the readme-ai repository.
+```sh
+git clone https://github.com/eli64s/readme-ai
+```
+
+2️⃣ Navigate to readme-ai directory.
+
+```sh
+cd readme-ai
+```
+
+3️⃣ Install dependencies using a method below.
+
+***Using Bash***
+```sh
+bash setup/setup.sh
+```
+
+***Using Conda***
+```sh
+conda create -n readmeai python=3.9 -y && \
+conda activate readmeai && \
+pip install -r requirements.txt
+```
+
+***Using Poetry***
+```sh
+poetry install
+```
+
+</details>
 
 ---
 
+### ⚙️ Configuration
 
-## 🗺 Roadmap
+<br>
 
-- [ ] Deploy to Streamlit production server.
+***Command-Line Arguments***
+
+To generate a *README.md* file, use the `readmeai` command in your terminal, along with the arguments below.
+
+| Short Flag | Long Flag      | Description                                       | Status       |
+|------------|----------------|---------------------------------------------------|--------------|
+| `-k`       | `--api-key`    | Your OpenAI API key.                              | Required     |
+| `-o`       | `--output`     | The output path for your README.md file.          | Required     |
+| `-r`       | `--repository` | The URL or path to your code repository.          | Required     |
+| `-t`       | `--template`   | The README template format to use. (coming soon!) | Coming Soon! |
+| `-l`       | `--language`   | The language of text written in the README file.  | Coming Soon! |
+
+<br>
+
+***Custom Settings***
+
+To customize the README file generation process, you can modify the following sections of the [configuration file:](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml)
+
+- [*api*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L2) - OpenAI language model API configuration settings.
+- [*git*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L12) - Default git repository settings used if no repository is provided.
+- [*paths*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L17) - Directory paths and files used by the *readme-ai* application.
+- [*prompts*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L26) - Large language model prompts used to generate the README file.
+- [*md*](https://github.com/eli64s/readme-ai/blob/main/readmeai/conf/conf.toml#L59) - Dynamic Markdown section code templates used to build the README file.
+
+---
+
+### 🚀 Running *README-AI*
+
+<br>
+
+***Using Streamlit***
+
+Use the app directly in your browser via Streamlit Community Cloud.
+
+- [🛸 Take me to *readme-ai* on Streamlit!](https://readmeai.streamlit.app/)
+
+<br>
+
+***Using Pip***
+
+```sh
+# Option 1: Run readmeai command with all required command-line arguments.
+readmeai --api-key "YOUR_API_KEY" --output readme-ai.md --repository https://github.com/eli64s/readme-ai
+```
+```sh
+# Option 2: Run readmeai command with OpenAI API key set as environment variable.
+export OPENAI_API_KEY="YOUR_API_KEY"
+readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+
+<br>
+
+***Using Docker***
+
+```sh
+# Option 1: Run Docker container with all required command-line arguments.
+docker run -it \
+-e OPENAI_API_KEY="YOUR_API_KEY" \
+-v "$(pwd)":/app zeroxeli/readme-ai:latest \
+readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+```sh
+# Option 2: Run Docker container with OpenAI API key set as environment variable.
+export OPENAI_API_KEY="YOUR_API_KEY"
+docker run -it \
+-e OPENAI_API_KEY=$OPENAI_API_KEY \
+-v "$(pwd)":/app zeroxeli/readme-ai:latest \
+readmeai -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+
+<br>
+
+<details><summary><b><i>Manually Run</i></b></summary>
+
+<br>
+
+***Using Conda***
+```sh
+conda activate readmeai
+export OPENAI_API_KEY="YOUR_API_KEY"
+python readmeai/main.py -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+
+<br>
+
+***Using Poetry***
+```sh
+poetry shell
+export OPENAI_API_KEY="YOUR_API_KEY"
+poetry run python readmeai/main.py -o readme-ai.md -r https://github.com/eli64s/readme-ai
+```
+
+</details>
+
+---
+
+### 🧪 Tests
+
+Execute the test suite using the command below.
+
+```sh
+bash scripts/test.sh
+```
+
+---
+
+## 🛣 Roadmap
+
+- [X] Publish project as a Python library via PyPI and a Docker image on Docker Hub.
+  - [*PyPI - readmeai*](https://pypi.org/project/readmeai/)
+  - [*Docker Hub - readme-ai*](https://hub.docker.com/repository/docker/zeroxeli/readme-ai/general)
+- [X] Integrate and deploy app with Streamlit to provide a simple user-interface for using the tool.
+  - [*Streamlit Community Cloud - readmeai*](https://readmeai.streamlit.app/)
+- [ ] Develop GitHub Actions script to automatically update the README file when new code is pushed.
+- [ ] Design README output templates for a variety of use-cases (i.e. data, web-dev, minimal, etc.)
+- [ ] Add support for generating README files in any language (i.e. CN, ES, FR, JA, KO, RU).
+
+---
+
+## 📒 Changelog
+
+[Changelog](https://github.com/eli64s/readme-ai/blob/main/CHANGELOG.md)
 
 ---
 
 ## 🤝 Contributing
 
-[Contributing Guide](./CONTRIBUTING.md)
+[Contributing Guidelines](https://github.com/eli64s/readme-ai/blob/main/CONTRIBUTING.md)
 
 ---
 
 ## 📄 License
 
-[Apache License 2.0](./LICENSE)
+[MIT](https://github.com/eli64s/readme-ai/blob/main/LICENSE)
 
 ---
 
 ## 👏 Acknowledgments
 
+*Badges*
+  - [Shields.io](https://shields.io/)
+  - [Aveek-Saha/GitHub-Profile-Badges](https://github.com/Aveek-Saha/GitHub-Profile-Badges)
+  - [Ileriayo/Markdown-Badges](https://github.com/Ileriayo/markdown-badges)
+
+<p align="right">
+  <a href="#top"><b>🔝 Return </b></a>
+</p>
+
 ---
+
+For a complete solution, you would likely need to create a custom Streamlit component using React, which would involve a more complex setup including setting up a React app, creating the drag-and-drop functionality using a library like react-beautiful-dnd, and then integrating this React app into your Streamlit app as a custom component.
+
+Creating a fully-featured README builder with a drag-and-drop interface as described in your request would be a complex project that would likely require a significant amount of time and expertise in both frontend development and Streamlit.
