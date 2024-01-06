@@ -151,25 +151,6 @@ def display_readme_output(output_path: str) -> None:
     st.markdown("### Output")
 
     with st.expander("Preview File"):
-        st.markdown(st.session_state.readme_content, unsafe_allow_html=True)
-
-    with st.expander("Download File"):
-        st.download_button(
-            label="Download README",
-            data=st.session_state.readme_content,
-            file_name=output_path,
-            mime="text/markdown",
-        )
-
-    with st.expander("Copy Markdown"):
-        st.code(st.session_state.readme_content, language="markdown")
-
-
-def display_readme_output(output_path: str) -> None:
-    """Display the README output."""
-    st.markdown("### Output")
-
-    with st.expander("Preview File"):
         with open(output_path, "r") as file:
             readme_content = file.read()
         st.markdown(readme_content, unsafe_allow_html=True)
