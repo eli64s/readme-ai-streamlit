@@ -11,22 +11,17 @@ license = "Apache-2.0"
 readme = "README.md"
 keywords = [
     "streamlit",
-    "streamlit-component",
     "streamlit-cloud",
     "streamlit-llm",
     "streamlit-gpt",
     "streamlit-ai",
-    "readme-gpt",
-    "readme-template",
     "readme-generator",
-    "readme-generation",
-    "automated-readme",
     "openai-api",
     "llms",
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8"
+python = ">=3.9"
 streamlit = "*"
 
 [tool.poetry.group.dev.dependencies]
