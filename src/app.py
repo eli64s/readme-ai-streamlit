@@ -1,15 +1,16 @@
-"""Streamlit application serving the readme-ai package."""
+"""Streamlit web app serving the Python package CLI readmeai."""
 
 import logging
 import os
 import subprocess
+from typing import Tuple
 
 import streamlit as st
 
 logging.basicConfig(level=logging.INFO)
 
 
-def init_session_state():
+def init_session_state() -> None:
     """Initialize session state variables if they don't exist."""
     if "readme_generated" not in st.session_state:
         st.session_state.readme_generated = False
@@ -17,40 +18,66 @@ def init_session_state():
         st.session_state.readme_content = ""
 
 
-def get_user_inputs():
+def get_user_inputs() -> Tuple:
     """Collect user inputs from the sidebar."""
     with st.sidebar:
-        st.header("Configuration")
+        st.header("README Settings")
+
         api_key = st.text_input("OpenAI API Key", type="password")
+
         repo_path = st.text_input("Repository Path", "")
-        output_path = st.text_input("Output Path", "readmeai.md")
 
         badge_style = st.selectbox(
             "Badge Style",
             [
+                "default",
                 "flat",
                 "flat-square",
                 "plastic",
                 "for-the-badge",
+                "skills",
+                "skills-light",
                 "social",
-                "apps",
-                "apps-light",
             ],
-            index=0,  # default selection (flat)
+            index=0,
             help="Select badge style for the output file.",
         )
-
         use_emojis = st.checkbox(
             "Use Emojis",
-            value=True,  # default checked
+            value=False,
             help="Include emojis in the README file.",
         )
-
         run_offline = st.checkbox(
-            "Run Offline",
-            value=False,  # default unchecked
+            "Offline Mode",
+            value=False,
             help="Run README-AI without an API key.",
         )
+        header_alignment = st.selectbox(
+            "Header Alignment",
+            ["center", "left"],
+            index=0,
+            help="Set header text alignment in the README file.",
+        )
+        project_logo = st.selectbox(
+            "Project Logo",
+            ["BLACK", "BLUE", "CLOUD", "PURPLE", "YELLOW"],
+            index=0,
+            help="URL or path to the project logo image for the README header.",
+        )
+        max_tokens = st.number_input("Max Tokens", min_value=1, value=3899, step=1)
+        model = st.selectbox(
+            "GPT Model",
+            ["gpt-3.5-turbo", "gpt-4", "gpt-4-1106-preview"],
+            index=0,
+        )
+        temperature = st.slider("Temperature", 0.0, 2.0, 0.1)
+
+        # template = st.text_input("Template", "")
+        # language = st.selectbox(
+        #    "Language",
+        #   ["English (en)", "other-languages"],
+        #    index=0,
+        # )
 
         generate_readme = st.button("Run", key="sidebar_button")
         reset_session = st.button("Clear")
@@ -62,28 +89,41 @@ def get_user_inputs():
 
         st.markdown(
             """
-            ## Resources
-            - [GitHub](https://github.com/eli64s/readme-ai)
-            - [PyPI](https://pypi.org/project/readmeai/)
-            - [Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
+            ## 🔗 :blue[Resources]
+            - [Readme-ai @ PyPI](https://pypi.org/project/readmeai/)
+            - [Readme-ai @ GitHub](https://github.com/eli64s/readme-ai)
+            - [Readme-ai @ Docker Hub](https://hub.docker.com/r/zeroxeli/readme-ai)
             """,
             unsafe_allow_html=True,
         )
 
     return (
         api_key,
-        output_path,
+        header_alignment,
+        project_logo,
         repo_path,
         badge_style,
         use_emojis,
         run_offline,
         generate_readme,
+        max_tokens,
+        model,
+        temperature,
+        # template,
+        # language,
     )
 
 
-def execute_command(command, path):
+def execute_command(
+    command: list, path: str, use_emojis: bool, run_offline: bool
+) -> None:
     """Execute the command and handle its output."""
     with st.spinner(f"Processing repository - {path}"):
+        if use_emojis:
+            command.append("--emojis")
+        if run_offline:
+            command.append("--offline")
+
         process = subprocess.Popen(
             command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
         )
@@ -103,11 +143,13 @@ def execute_command(command, path):
                 break
 
 
-def display_readme_output(output_path):
-    """Display the generated README content and provide a download link."""
+def display_readme_output(output_path: str) -> None:
+    """Display the README output."""
     st.markdown("### Output")
+
     with st.expander("Preview File"):
         st.markdown(st.session_state.readme_content, unsafe_allow_html=True)
+
     with st.expander("Download File"):
         st.download_button(
             label="Download README",
@@ -115,53 +157,73 @@ def display_readme_output(output_path):
             file_name=output_path,
             mime="text/markdown",
         )
+
     with st.expander("Copy Markdown"):
         st.code(st.session_state.readme_content, language="markdown")
 
 
-def main():
-    init_session_state()
-    st.set_page_config(page_title="README-AI", layout="centered")
-    st.title("README-AI")
-    st.markdown("🚀 Automated README generation from the terminal, powered by GPT 🪐")
+def main(output_path: str = "README-AI.md") -> None:
+    """Main function for the Streamlit web app for README-AI."""
+    st.set_page_config(
+        page_title="README-AI",
+        page_icon=":robot_face:",
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
+    st.title(":blue[README-AI]")
+    st.markdown(
+        """🎈 Automated README file generator, powered by GPT language model APIs."""
+    )
 
+    init_session_state()
     (
         api_key,
-        output_path,
+        header_alignment,
+        project_logo,
         repo_path,
         badge_style,
         use_emojis,
         run_offline,
         generate_readme,
+        max_tokens,
+        model,
+        temperature,
+        # template,
+        # language,
     ) = get_user_inputs()
 
     if generate_readme:
-        command = ["readmeai", "--output", output_path, "--repository", repo_path]
+        command = ["readmeai", "--repository", repo_path]
 
-        # Include conditions and additional flags based on new inputs
         if not run_offline:
             os.environ["OPENAI_API_KEY"] = api_key
 
         command.extend(["--badges", badge_style])
-        command.extend(["--emojis", str(use_emojis).lower()])
-        command.extend(["--offline", str(run_offline).lower()])
+        command.extend(["--image", project_logo])
+        command.extend(["--align", header_alignment])
+        command.extend(["--max-tokens", str(max_tokens)])
+        command.extend(["--model", model])
+        command.extend(["--temperature", str(temperature)])
+
+        # if template:
+        #    command.extend(["--template", template])
+        # command.extend(["--language", language])
 
         try:
-            execute_command(command, repo_path)
+            execute_command(command, repo_path, use_emojis, run_offline)
+
             st.success(f"README generated successfully - {output_path}")
+
             if os.path.exists(output_path):
                 with open(output_path, "r") as file:
                     readme_content = file.read()
+
                 st.session_state.readme_generated = True
                 st.session_state.readme_content = readme_content
 
-        except subprocess.CalledProcessError as excinfo:
-            logging.error(f"Subprocess Error: {excinfo}")
-            st.error(f"❌ README generation failed.\nError: {excinfo.stderr.decode()}")
-
-        except Exception as excinfo:
-            logging.error(f"An unexpected error occurred: {excinfo}")
-            st.error(f"❌ README generation failed.\nError: {str(excinfo)}")
+        except Exception as e:
+            st.error(f"README generation failed - {e}")
+            st.stop()
 
     if st.session_state.readme_generated:
         display_readme_output(output_path)

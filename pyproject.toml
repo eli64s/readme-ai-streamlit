@@ -3,22 +3,30 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "readmeai-ui"
+name = "readme-ai-streamlit"
 version = "0.1.0"
-description = "Streamlit app serving the readmeai cli tool."
-authors = ["Eli <43382407+eli64s@users.noreply.github.com>"]
+description = "🎈 Auto-generate beautiful README files on Streamlit, powered by AI 🌤"
+authors = ["Eli <0x.eli.64s@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
 keywords = [
-    "readme",
     "streamlit",
-    "streamlit-llm", 
+    "streamlit-component",
+    "streamlit-cloud",
+    "streamlit-llm",
     "streamlit-gpt",
+    "streamlit-ai",
+    "readme-gpt",
+    "readme-template",
+    "readme-generator",
+    "readme-generation",
+    "automated-readme",
     "openai-api",
+    "llms",
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
+python = ">=3.8"
 streamlit = "*"
 
 [tool.poetry.group.dev.dependencies]
@@ -26,3 +34,4 @@ pytest = "*"
 pytest-cov = "*"
 pytest-randomly = "*"
 pytest-sugar = "*"
+pytest-xdist = "*"
