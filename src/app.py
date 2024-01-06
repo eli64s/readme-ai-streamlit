@@ -165,6 +165,28 @@ def display_readme_output(output_path: str) -> None:
         st.code(st.session_state.readme_content, language="markdown")
 
 
+def display_readme_output(output_path: str) -> None:
+    """Display the README output."""
+    st.markdown("### Output")
+
+    with st.expander("Preview File"):
+        with open(output_path, "r") as file:
+            readme_content = file.read()
+        st.markdown(readme_content, unsafe_allow_html=True)
+
+    with st.expander("Download File"):
+        with open(output_path, "rb") as file:
+            st.download_button(
+                label="Download README",
+                data=file,
+                file_name=os.path.basename(output_path),
+                mime="text/markdown",
+            )
+
+    with st.expander("Copy Markdown"):
+        st.code(readme_content, language="markdown")
+
+
 def main(output_path: str = "README-AI.md") -> None:
     """Main function for the Streamlit web app for README-AI."""
     st.set_page_config(
