@@ -7,6 +7,9 @@ from typing import Tuple
 
 import streamlit as st
 
+from utils import get_readme_tempfile
+
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -221,12 +224,17 @@ def main(output_path: str = "README-AI.md") -> None:
                 st.session_state.readme_generated = True
                 st.session_state.readme_content = readme_content
 
-        except Exception as e:
-            st.error(f"README generation failed - {e}")
-            st.stop()
+        except subprocess.CalledProcessError as exc:
+            logging.error(f"Subprocess error occurred: {exc}")
+            st.error(f"❌ README generation failed.\nError: {str(exc)}")
+
+        except Exception as exc:
+            logging.error(f"An unexpected error occurred: {exc}")
+            st.error(f"❌ README generation failed.\nError: {str(exc)}")
 
     if st.session_state.readme_generated:
-        display_readme_output(output_path)
+        temp_readme_path = get_readme_tempfile(st.session_state.readme_content)
+        display_readme_output(temp_readme_path)
 
 
 if __name__ == "__main__":
