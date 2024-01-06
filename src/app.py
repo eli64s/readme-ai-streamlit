@@ -3,12 +3,10 @@
 import logging
 import os
 import subprocess
-from typing import Tuple
+import tempfile
+from typing import List, Tuple
 
 import streamlit as st
-
-from utils import get_readme_tempfile
-
 
 logging.basicConfig(level=logging.INFO)
 
@@ -117,62 +115,42 @@ def get_user_inputs() -> Tuple:
     )
 
 
-def execute_command(
-    command: list, path: str, use_emojis: bool, run_offline: bool
-) -> None:
-    """Execute the command and handle its output."""
-    with st.spinner(f"Processing repository - {path}"):
-        if use_emojis:
-            command.append("--emojis")
-        if run_offline:
-            command.append("--offline")
-
+def execute_command(command: List[str], output_path: str) -> None:
+    """Execute the CLI command to generate the README file."""
+    with st.spinner("🧚‍♀️ Generating README file..."):
         process = subprocess.Popen(
             command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
         )
-        output_container = st.empty()
+
         stderr_accumulated = ""
 
-        while True:
-            stderr_line = process.stderr.readline()
-            if stderr_line:
-                stderr_accumulated += stderr_line
-                output_container.text_area(
-                    "Logging README-AI execution",
-                    value=stderr_accumulated,
-                    height=250,
-                )
-            if process.poll() is not None:
-                break
+        with open(output_path, "w") as file:
+            output_container = st.empty()
+
+            while True:
+                output = process.stdout.readline()
+
+                if output:
+                    file.write(output)
+
+                stderr_line = process.stderr.readline()
+
+                if stderr_line:
+                    stderr_accumulated += stderr_line
+                    output_container.text_area(
+                        "Logging README-AI execution",
+                        value=stderr_accumulated,
+                        height=250,
+                    )
+                if process.poll() is not None:
+                    break
 
 
-def display_readme_output(output_path: str) -> None:
-    """Display the README output."""
-    st.markdown("### Output")
-
-    with st.expander("Preview File"):
-        with open(output_path, "r") as file:
-            readme_content = file.read()
-        st.markdown(readme_content, unsafe_allow_html=True)
-
-    with st.expander("Download File"):
-        with open(output_path, "rb") as file:
-            st.download_button(
-                label="Download README",
-                data=file,
-                file_name=os.path.basename(output_path),
-                mime="text/markdown",
-            )
-
-    with st.expander("Copy Markdown"):
-        st.code(readme_content, language="markdown")
-
-
-def main(output_path: str = "README-AI.md") -> None:
+def main(output_path: str) -> None:
     """Main function for the Streamlit web app for README-AI."""
     st.set_page_config(
         page_title="README-AI",
-        page_icon=":robot_face:",
+        page_icon="🏎💨",
         layout="wide",
         initial_sidebar_state="expanded",
     )
@@ -199,9 +177,9 @@ def main(output_path: str = "README-AI.md") -> None:
     ) = get_user_inputs()
 
     if generate_readme:
-        command = ["readmeai", "--repository", repo_path]
+        command = ["readmeai", "--repository", repo_path, "--output", output_path]
 
-        if not run_offline:
+        if run_offline is False:
             os.environ["OPENAI_API_KEY"] = api_key
 
         command.extend(["--badges", badge_style])
@@ -209,36 +187,53 @@ def main(output_path: str = "README-AI.md") -> None:
         command.extend(["--align", header_alignment])
         command.extend(["--max-tokens", str(max_tokens)])
         command.extend(["--model", model])
-        command.extend(["--temperature", str(temperature)])
+
+        if use_emojis is True:
+            command.extend(["--emojis"])
+        if run_offline is True:
+            command.extend(["--offline"])
 
         # if template:
         #    command.extend(["--template", template])
         # command.extend(["--language", language])
 
         try:
-            execute_command(command, repo_path, use_emojis, run_offline)
+            execute_command(command, output_path)
+            st.success("✅ README generation complete.")
 
-            st.success(f"README generated successfully - {output_path}")
+            with open(output_path, "r") as file:
+                readme_content = file.read()
 
-            if os.path.exists(output_path):
-                with open(output_path, "r") as file:
-                    readme_content = file.read()
+            st.session_state.readme_generated = True
+            st.session_state.readme_content = readme_content
 
-                st.session_state.readme_generated = True
-                st.session_state.readme_content = readme_content
+            if st.session_state.readme_generated:
+                with st.expander("Preview File"):
+                    with open(output_path, "r") as file:
+                        readme_content = file.read()
+                        st.markdown(readme_content, unsafe_allow_html=True)
 
-        except subprocess.CalledProcessError as exc:
-            logging.error(f"Subprocess error occurred: {exc}")
+                    st.session_state.readme_generated = True
+                    st.session_state.readme_content = readme_content
+
+                with st.expander("Download File"):
+                    with open(output_path, "rb") as file:
+                        st.download_button(
+                            label="Download :blue[README-AI.md]",
+                            data=file,
+                            file_name="README-AI.md",
+                            mime="text/markdown",
+                        )
+
+                with st.expander("Copy Markdown"):
+                    st.write("Copy the markdown below to your clipboard.")
+                    st.code(st.session_state.readme_content, language="markdown")
+
+        except (Exception, subprocess.CalledProcessError) as exc:
+            logging.error(f"An error occurred: {exc}")
             st.error(f"❌ README generation failed.\nError: {str(exc)}")
-
-        except Exception as exc:
-            logging.error(f"An unexpected error occurred: {exc}")
-            st.error(f"❌ README generation failed.\nError: {str(exc)}")
-
-    if st.session_state.readme_generated:
-        temp_readme_path = get_readme_tempfile(st.session_state.readme_content)
-        display_readme_output(temp_readme_path)
 
 
 if __name__ == "__main__":
-    main()
+    with tempfile.NamedTemporaryFile(suffix=".md", mode="w+", delete=False) as tmpfile:
+        main(tmpfile.name)
