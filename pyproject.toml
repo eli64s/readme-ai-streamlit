@@ -3,9 +3,9 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "readme-ai-streamlit"
+name = "src"
 version = "0.1.0"
-description = "🎈 Auto-generate beautiful README files on Streamlit, powered by AI 🌤"
+description = "🧚‍♀️ Generate beautiful README automatically on Streamlit"
 authors = ["Eli <0x.eli.64s@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
@@ -21,7 +21,7 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9"
+python = ">=3.10,<4.0"
 streamlit = "*"
 
 [tool.poetry.group.dev.dependencies]
