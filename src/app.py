@@ -1,14 +1,13 @@
 """Streamlit web app serving the Python package CLI readmeai."""
 
 import logging
-import os
 import subprocess
 import tempfile
 from typing import List
 
 import streamlit as st
 
-from src.cli import readme_settings
+from src.cli import app_settings, build_command
 
 logging.basicConfig(level=logging.INFO)
 
@@ -52,9 +51,10 @@ def main(output_path: str) -> None:
         initial_sidebar_state="expanded",
     )
     st.title(":rainbow[README-AI]")
-    st.markdown("🎈 Automated README file generator, powered by GPT language models.")
+    st.markdown("🎈 Automated README file generator, powered by AI.")
 
     init_session_state()
+
     (
         api_key,
         header_alignment,
@@ -69,31 +69,24 @@ def main(output_path: str) -> None:
         temperature,
         # template,
         # language,
-    ) = readme_settings()
+    ) = app_settings()
 
     if generate_readme:
-        command = ["readmeai", "--repository", repo_path, "--output", output_path]
-
-        if run_offline:
-            os.environ["OPENAI_API_KEY"] = api_key
-        else:
-            command.extend(["--offline"])
-
-        if use_emojis:
-            command.extend(["--emojis"])
-
-        command.extend(["--badges", badge_style])
-        command.extend(["--image", project_logo])
-        command.extend(["--align", header_alignment])
-        command.extend(["--max-tokens", str(max_tokens)])
-        command.extend(["--model", model])
-
-        # if template:
-        #    command.extend(["--template", template])
-        # command.extend(["--language", language])
-
+        command = build_command(
+            repo_path,
+            output_path,
+            api_key,
+            use_emojis,
+            badge_style,
+            project_logo,
+            header_alignment,
+            max_tokens,
+            model,
+            run_offline,
+        )
         try:
             execute_command(command, output_path)
+
             st.success("✅ README generation complete.")
 
             with open(output_path, "r") as file:

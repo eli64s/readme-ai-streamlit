@@ -1,13 +1,12 @@
 """Streamlit web app serving the Python package CLI readmeai."""
 
-from typing import Tuple
+import os
+from typing import List, Tuple
 
 import streamlit as st
 
 
-def readme_settings() -> (
-    Tuple[str, str, str, str, str, bool, bool, bool, int, str, float]
-):
+def app_settings() -> Tuple[str, str, str, str, str, bool, bool, bool, int, str, float]:
     """Collect user inputs from the sidebar."""
     with st.sidebar:
         st.title(":blue[README Configuration]")
@@ -127,3 +126,39 @@ def readme_settings() -> (
         # template,
         # language,
     )
+
+
+def build_command(
+    repo_path: str,
+    output_path: str,
+    api_key: str,
+    use_emojis: bool,
+    badge_style: str,
+    project_logo: str,
+    header_alignment: str,
+    max_tokens: int,
+    model: str,
+    run_offline: bool,
+) -> List[str]:
+    """Build the command to execute the readme-ai CLI and generate the README."""
+    command = ["readmeai", "--repository", repo_path, "--output", output_path]
+
+    if not run_offline:
+        os.environ["OPENAI_API_KEY"] = api_key
+    else:
+        command.extend(["--offline"])
+
+    if use_emojis:
+        command.extend(["--emojis"])
+
+    command.extend(["--badges", badge_style])
+    command.extend(["--image", project_logo])
+    command.extend(["--align", header_alignment])
+    command.extend(["--max-tokens", str(max_tokens)])
+    command.extend(["--model", model])
+
+    # if template:
+    #    command.extend(["--template", template])
+    # command.extend(["--language", language])
+
+    return command
