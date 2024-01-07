@@ -22,6 +22,7 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
+readmeai = ">=0.4.99"
 streamlit = "*"
 
 [tool.poetry.group.dev.dependencies]
