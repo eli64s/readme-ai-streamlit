@@ -23,11 +23,31 @@ keywords = [
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 readmeai = ">=0.4.99"
-streamlit = "*"
+streamlit = ">=1.29.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "*"
-pytest-cov = "*"
-pytest-randomly = "*"
-pytest-sugar = "*"
-pytest-xdist = "*"
+ruff = "*"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.format]
+quote-style = "double"
+docstring-code-format = true
+docstring-code-line-length = 20
+
+[tool.ruff.lint]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
