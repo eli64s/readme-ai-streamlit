@@ -21,9 +21,9 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-readmeai = "*"
-streamlit = "^1.29.0"
+python = ">3.9.7,<4.0.0"
+readmeai = "0.4.998"
+streamlit = "1.29.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
