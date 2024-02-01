@@ -55,7 +55,7 @@ def main(output_path: str) -> None:
     """Main function for the Streamlit web app for README-AI."""
     st.set_page_config(
         page_title="README-AI",
-        page_icon="images/logo.png",
+        page_icon="assets/logo.png",
         layout="centered",
         initial_sidebar_state="expanded",
     )
