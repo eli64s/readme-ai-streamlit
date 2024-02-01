@@ -60,7 +60,7 @@ def main(output_path: str) -> None:
         initial_sidebar_state="expanded",
     )
     with st.sidebar:
-        st.image("images/logo.png", width=150)
+        st.image("assets/logo.png", width=150)
         st.title("README-AI")
         st.markdown(
             """
