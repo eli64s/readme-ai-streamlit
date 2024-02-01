@@ -1,1 +1,10 @@
+.DS_Store
+.streamlit
+.ruff_cache/
+.pytest_cache/
+__pycache__/
 notebooks/
+git reset
+
+# Files
+src/code_search.py
