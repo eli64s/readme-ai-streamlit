@@ -28,10 +28,16 @@
   </a>
 </p>
 
----
+> <details><summary>Documentation</summary>
+>
+> - [Read the official readme-ai docs (🚧 wip)](https://eli64s.github.io/readme-ai)
+> - [YouTube tutorial created by the community](https://www.youtube.com/watch?v=NiUrm1ni7bE)
+>
+> </details>
 
-**Documentation**: [gh-pages](https://eli64s.github.io/readme-ai)
-
-**Source Code**: [readme-ai](https://github.com/eli64s/readme-ai)
+> <details><summary>Source Code</summary>
+>
+> - GitHub repository source code [@readme-ai](https://github.com/eli64s/readme-ai)
+> </details>
 
 ---
