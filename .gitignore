@@ -1,10 +1,47 @@
-.DS_Store
-.streamlit
-.ruff_cache/
-.pytest_cache/
-__pycache__/
-notebooks/
-git reset
+# Build artifacts
+build/
+dist/
+*.egg-info/
 
-# Files
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+.venv/
+.env
+
+# System-specific files
+.DS_Store
+
+# Temporary files
+*~
+
+# Logging
+logs/
+*.log
+
+# Testing
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+outputs/
+notebooks/
+
+# VSCode workspace settings
+.vscode/
+
+# Python Tools
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Work In Progress (WIP)
 src/code_search.py
+scripts/test_gen.sh

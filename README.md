@@ -4,20 +4,27 @@
 </p>
 <h1 align="center">README-AI</h1>
 <p align="center">
-    <em>Automated README file generator, powered by LLM APIs</em>
+  <em>Automated <code>README</code> file generator, powered by large language model APIs</em>
 </p>
 <p align="center">
   <a href="https://github.com/eli64s/readme-ai/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/eli64s/readme-ai/release-pipeline.yml?logo=githubactions&label=cicd&logoColor=white&color=c125ff" alt="github-actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/eli64s/readme-ai/release-pipeline.yml?logo=githubactions&label=CICD&logoColor=white&color=c125ff"
+    alt="github-actions">
   </a>
   <a href="https://app.codecov.io/gh/eli64s/readme-ai">
-    <img src="https://img.shields.io/codecov/c/github/eli64s/readme-ai?logo=codecov&logoColor=white&color=c125ff" alt="codecov">
+    <img src="https://img.shields.io/codecov/c/github/eli64s/readme-ai?logo=codecov&logoColor=white&label=Coverage&color=c125ff"
+    alt="codecov">
   </a>
   <a href="https://pypi.python.org/pypi/readmeai/">
-    <img src="https://img.shields.io/pypi/v/readmeai?logo=PyPI&logoColor=white&color=c125ff" alt="pypi-version">
+    <img src="https://img.shields.io/pypi/v/readmeai?logo=Python&logoColor=white&label=PyPI&color=c125ff" alt="pypi-version">
   </a>
   <a href="https://www.pepy.tech/projects/readmeai">
-    <img src="https://img.shields.io/pepy/dt/readmeai?logo=Python&logoColor=white&color=c125ff" alt="pepy-total-downloads">
+    <img src="https://img.shields.io/pepy/dt/readmeai?logo=PyPI&logoColor=white&label=Downloads&color=c125ff"
+    alt="pepy-total-downloads">
+  </a>
+  <a href="https://opensource.org/license/mit/">
+    <img src="https://img.shields.io/github/license/eli64s/readme-ai?logo=opensourceinitiative&logoColor=white&label=License&color=c125ff"
+    alt="license">
   </a>
 </p>
 
