@@ -11,9 +11,9 @@ logging.basicConfig(level=logging.INFO)
 QUICK_LINKS = """
 <div align="left">
 
-[Docs](https://readme-ai.readthedocs.io/) &nbsp;&nbsp;|&nbsp;&nbsp;
+[Docs](https://eli64s.github.io/readme-ai/) &nbsp;&nbsp;|&nbsp;&nbsp;
 [GitHub](https://github.com/eli64s/readme-ai) &nbsp;&nbsp;|&nbsp;&nbsp;
-[PyPI](https://pypi.org/project/readme-ai/)
+[PyPI](https://pypi.org/project/readmeai/)
 
 </div>
 """
