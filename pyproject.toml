@@ -20,7 +20,7 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.10.0,<4.0.0"
-readmeai = "*"
+readmeai = "0.5.86"
 streamlit = "*"
 
 [tool.poetry.group.dev.dependencies]
@@ -30,7 +30,6 @@ ruff = "*"
 
 [tool.poetry.group.test.dependencies]
 pytest = "=7.4.4"
-pytest-asyncio = "*"
 pytest-cov = "*"
 pytest-randomly = "*"
 pytest-sugar = "*"

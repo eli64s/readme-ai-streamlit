@@ -34,7 +34,7 @@
 > - [YouTube tutorial created by the community](https://www.youtube.com/watch?v=NiUrm1ni7bE)
 >
 > </details>
-
+>
 > <details><summary>Source Code</summary>
 >
 > - GitHub repository source code [@readme-ai](https://github.com/eli64s/readme-ai)
