@@ -19,7 +19,7 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10.0,<4.0.0"
+python = "^3.9,<4.0.0"
 readmeai = "0.5.86"
 streamlit = "*"
 

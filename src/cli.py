@@ -8,6 +8,16 @@ import streamlit as st
 
 logging.basicConfig(level=logging.INFO)
 
+QUICK_LINKS = """
+<div align="left">
+
+[Docs](https://readme-ai.readthedocs.io/) &nbsp;&nbsp;|&nbsp;&nbsp;
+[GitHub](https://github.com/eli64s/readme-ai) &nbsp;&nbsp;|&nbsp;&nbsp;
+[PyPI](https://pypi.org/project/readme-ai/)
+
+</div>
+"""
+
 
 def app_settings() -> (
     tuple[
@@ -30,7 +40,10 @@ def app_settings() -> (
     ]
 ):
     with st.sidebar:
-        st.title(":blue[README-AI Configuration]")
+        st.title(":rainbow[README-AI]")
+        st.markdown(QUICK_LINKS, unsafe_allow_html=True)
+        st.markdown("---")
+        st.markdown("### Configuration")
 
         repo_path = st.text_input(
             "Repository", value="https://github.com/eli64s/readme-ai"
@@ -52,7 +65,7 @@ def app_settings() -> (
             )
 
         api_service = st.selectbox(
-            "LLM API Service",
+            "LLM API",
             ["openai", "ollama", "gemini", "offline"],
             index=0,
         )

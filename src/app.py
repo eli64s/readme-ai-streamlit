@@ -14,7 +14,7 @@ from src.commands import build_command, execute_command
 logging.basicConfig(level=logging.INFO)
 
 
-DESCRIPTION = "README file generator, powered by large language model APIs 👾"
+DESCRIPTION = "README generator, powered by AI 👾"
 
 
 def init_session_state() -> None:
@@ -39,7 +39,6 @@ def main():
     )
     st.title(":rainbow[README-AI]")
     st.markdown(DESCRIPTION)
-
     init_session_state()
 
     (
