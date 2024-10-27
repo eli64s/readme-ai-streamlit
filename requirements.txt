@@ -126,7 +126,7 @@ pytz==2024.2
     # via pandas
 pyyaml==6.0.2
     # via readmeai
-readmeai==0.5.99.post3
+readmeai==0.5.99.post4
     # via src (pyproject.toml)
 referencing==0.35.1
     # via
