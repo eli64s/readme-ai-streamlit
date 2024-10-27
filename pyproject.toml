@@ -29,7 +29,7 @@ keywords = [
     "streamlit",
 ]
 dependencies = [
-    "readmeai==0.5.99post4",
+    "readmeai==0.5.99post5",
     "streamlit",
 ]
 
