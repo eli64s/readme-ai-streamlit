@@ -1267,7 +1267,7 @@ wheels = [
 
 [[package]]
 name = "readmeai"
-version = "0.5.99.post3"
+version = "0.5.99.post4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1282,9 +1282,9 @@ dependencies = [
     { name = "tenacity" },
     { name = "tiktoken" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c2/3d/2f3012a5a767eddd8388a015f9266380758407cf2d37dc704051f827452c/readmeai-0.5.99.post3.tar.gz", hash = "sha256:76803623ef1316205d6660cb717eaeb00cc2ea089f76998cafdfab2f1ab39483", size = 149554 }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/3c/aa0be66f9de8bbd137be81127e3e230af971564e9922fa3bd241b9e420a6/readmeai-0.5.99.post4.tar.gz", hash = "sha256:ff944cd7882f980be18a45600b0db1020039ad7570581567f776bd34c24f5d52", size = 149953 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9a/0d/94a34012c914184d5f1d1200df48008cef51e5bd73d7d64bd09fe6f66751/readmeai-0.5.99.post3-py3-none-any.whl", hash = "sha256:a9031f13c278017ac2e39c2e39bdc07e281a75b08204e0efb82bb347262434d0", size = 166679 },
+    { url = "https://files.pythonhosted.org/packages/75/26/077ea939504efe0fe615c18ae05ddfef3488945bcc582d270cfbb3f4e68e/readmeai-0.5.99.post4-py3-none-any.whl", hash = "sha256:dbde15dc109a4bd9a099b8857adddea2cae22667e19b9bc29a6b7c56095a0b86", size = 167175 },
 ]
 
 [[package]]
@@ -1512,7 +1512,7 @@ requires-dist = [
     { name = "pytest-randomly", marker = "extra == 'test'" },
     { name = "pytest-sugar", marker = "extra == 'test'" },
     { name = "pytest-xdist", marker = "extra == 'test'" },
-    { name = "readmeai", specifier = "==0.5.99.post3" },
+    { name = "readmeai", specifier = "==0.5.99.post4" },
     { name = "ruff", marker = "extra == 'dev'" },
     { name = "streamlit" },
 ]
