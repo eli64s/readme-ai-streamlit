@@ -1,0 +1,8 @@
+mypy
+pre-commit
+ruff
+pytest==7.4.4
+pytest-cov
+pytest-randomly
+pytest-sugar
+pytest-xdist
