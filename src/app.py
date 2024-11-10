@@ -13,9 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 TITLE = "README-AI"
-DESCRIPTION = """
-README file generator, powered by AI.
-"""
+DESCRIPTION = ""
 
 SUPPORTED_MODELS = {
     "OPENAI": ["gpt-3.5-turbo", "gpt-4", "gpt-4-turbo"],
@@ -91,11 +89,20 @@ class ReadmeAIApp:
         """Render application header."""
         col1, _ = st.columns([0.99, 0.01])
         with col1:
-            st.image(
-                "assets/logo.svg",
-                width=600,
+            (
+                st.markdown(
+                    """
+                    <p align="left"><img src="https://raw.githubusercontent.com/eli64s/readme-ai/98f887af0de5fb2e40944a94e3d761b8be472312/docs/docs/assets/svg/readme-ai-logo-gradient.svg" alt="readme-ai-banner-logo" width="45%"></p>
+                    <p align="left"><em>Designed for simplicity, customization, and developer productivity.</em></p>
+                    """,
+                    unsafe_allow_html=True,
+                )
             )
-            st.markdown(DESCRIPTION)
+        # st.image(
+        #     "assets/logo.svg",
+        #     width=600,
+        # )
+        # st.markdown(DESCRIPTION)
 
     def render_sidebar(self) -> tuple[str, str, dict]:
         """Render sidebar with configuration options."""
