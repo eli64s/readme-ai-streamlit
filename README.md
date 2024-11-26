@@ -1,3 +1,7 @@
+<a name="readme-top"></a>
+
+<div align="center">
+
 <p align="center">
   <img src="./assets/logo.svg" alt="readme-ai-streamlit" width="100%">
 </p>
@@ -24,10 +28,21 @@
   </a>
 </p>
 
----
+&nbsp;&emsp13;·&emsp13;&nbsp;[Official Documentation][docs]&nbsp;&emsp13;·&emsp13;&nbsp;[README-AI CLI][readme-ai]&nbsp;&emsp13;·&emsp13;&nbsp;[Report Bug][github-issues]&nbsp;&emsp13;·&emsp13;&nbsp;[Request Feature][github-issues]
 
-**Documentation**: <a href="https://eli64s.github.io/readme-ai" target="_blank">https://eli64s.github.io/readme-ai</a>
+</div>
 
-**Source Code**: <a href="https://github.com/eli64s/readme-ai" target="_blank">https://github.com/eli64s/readme-ai</a>
+<img width="100%" height="4px" src="./assets/line.svg" alt="readme-ai-divider">
 
----
+## 🎗 License
+
+Copyright © 2023 [readme-ai][readme-ai]. <br />
+Released under the [Apache License 2.0][license] license.
+
+<!-- REFERENCE LINKS -->
+
+[docs]: https://eli64s.github.io/readme-ai
+[readme-ai]: https://github.com/eli64s/readme-ai
+[github-issues]: https://github.com/eli64s/readme-ai-streamlit/issues
+[license]: https://github.com/eli64s/readme-ai-streamlit/blob/main/LICENSE
+[return-button]: https://img.shields.io/badge/Back_to_top-5D4ED3?style=flat&logo=ReadMe&logoColor=white
