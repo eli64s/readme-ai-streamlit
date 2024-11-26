@@ -93,7 +93,7 @@ class ReadmeAIApp:
                 st.markdown(
                     """
                     <p align="left"><img src="https://raw.githubusercontent.com/eli64s/readme-ai/98f887af0de5fb2e40944a94e3d761b8be472312/docs/docs/assets/svg/readme-ai-logo-gradient.svg" alt="readme-ai-banner-logo" width="45%"></p>
-                    <p align="left"><em>Designed for simplicity, customization, and developer productivity.</em></p>
+                    <!--<p align="left"><em>Designed for simplicity, customization, and developer productivity.</em></p>-->
                     """,
                     unsafe_allow_html=True,
                 )
